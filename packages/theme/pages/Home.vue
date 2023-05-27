@@ -22,7 +22,7 @@ import InstagramFeed from '~/components/InstagramFeed.vue';
 import NewsletterModal from '~/components/NewsletterModal.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import { useUiState } from '../composables';
-import { useNewsLetter, facetGetters } from '@vue-storefront/odoo';
+import { useNewsLetter, facetGetters } from '@vue-storefront/web3store';
 import { addBasePath } from '@vue-storefront/core';
 import { useUiNotification } from '~/composables';
 

@@ -335,7 +335,7 @@ export type ProductVariantResult = {
 };
 
 export type ProductAssetResult = {
-  productAsset: ProductAsset
+  productAssets: ProductAssets
 };
 
 export type CartAddItemResult = {

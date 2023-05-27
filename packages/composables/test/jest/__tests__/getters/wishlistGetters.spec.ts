@@ -22,7 +22,7 @@ it('get item name', () => {
   expect(getWishlistItemName(mockedWishlist.wishlistItems[0])).toStrictEqual('Blazer Michael Kors brown');
 });
 // it('get item image', () => {
-//   expect(getWishlistItemImage(mockedWishlist.wishlistItems[0])).toStrictEqual('https://vsfdemo.labs.odoogap.com/web/image/product.template/36/image_1920');
+//   expect(getWishlistItemImage(mockedWishlist.wishlistItems[0])).toStrictEqual('https://vsfdemo.labs.web3storegap.com/web/image/product.template/36/image_1920');
 // });
 it('get total wishlist items', () => {
   expect(getWishlistTotalItems(mockedWishlist)).toStrictEqual(2);

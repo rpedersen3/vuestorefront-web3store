@@ -3,7 +3,7 @@
 import { ref } from '@nuxtjs/composition-api';
 import { useVSFContext, sharedRef } from '@vue-storefront/core';
 import { Context } from '@vue-storefront/core';
-import { GraphqlMailingInput, MailingContact, MailingItem } from '@vue-storefront/odoo-api';
+import { GraphqlMailingInput, MailingContact, MailingItem } from '@vue-storefront/web3store-api';
 
 const useMailing = (): any => {
   const context: Context = useVSFContext();
@@ -21,7 +21,7 @@ const useMailing = (): any => {
     loading.value = true;
 
     try {
-      const { data } = await context.$odoo.api.getMailingLists();
+      const { data } = await context.$web3store.api.getMailingLists();
 
       mailingList.value = data?.mailingLists?.mailingLists;
 
@@ -37,7 +37,7 @@ const useMailing = (): any => {
     loading.value = true;
 
     try {
-      const { data } = await context.$odoo.api.getMailingContacts();
+      const { data } = await context.$web3store.api.getMailingContacts();
       mailingContacts.value = data?.mailingContacts?.mailingContacts;
 
     } catch (error) {
@@ -52,7 +52,7 @@ const useMailing = (): any => {
     loading.value = true;
 
     try {
-      const response = await context.$odoo.api.addMultipleMailings({ mailings });
+      const response = await context.$web3store.api.addMultipleMailings({ mailings });
       const { data } = response;
 
       if (data) {

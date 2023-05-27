@@ -27,13 +27,13 @@ const cachePlugin = {
 };
 
 const apiHandler = new workbox.strategies.StaleWhileRevalidate({
-  cacheName: 'odoo-apis',
+  cacheName: 'web3store-apis',
   cacheOptions,
   plugins: [cachePlugin, timeoutPlugin]
 });
 
 const imageHandler = new workbox.strategies.StaleWhileRevalidate({
-  cacheName: 'odoo-images',
+  cacheName: 'web3store-images',
   cacheOptions: { ignoreVary: true },
   plugins: [timeoutPlugin]
 });

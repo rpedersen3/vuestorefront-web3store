@@ -8,7 +8,7 @@ import {
   AgnosticSort,
   FacetsGetters
 } from '@vue-storefront/core';
-import { Category, Product, ProductVariant, ProductAsset } from '@vue-storefront/odoo-api';
+import { Category, Product, ProductVariant, ProductAsset } from '@vue-storefront/web3store-api';
 import { FacetResultsData, SearchData } from '../types';
 import CategoryGetters from './categoryGetters';
 const getAll = (

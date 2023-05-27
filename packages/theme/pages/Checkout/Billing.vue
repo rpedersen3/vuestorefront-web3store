@@ -187,7 +187,7 @@ import {
   useShippingAsBillingAddress,
   useCart,
   cartGetters
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 
 export default {

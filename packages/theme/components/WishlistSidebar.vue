@@ -140,7 +140,7 @@ import {
   wishlistGetters,
   productGetters,
   cartGetters
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 import { onSSR } from '@vue-storefront/core';
 import { useUiState } from '~/composables';
 

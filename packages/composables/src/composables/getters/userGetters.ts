@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 
 import { UserGetters } from '@vue-storefront/core';
-import { Partner, AgnosticUser } from '@vue-storefront/odoo-api';
+import { Partner, AgnosticUser } from '@vue-storefront/web3store-api';
 
 export const getUserFirstName = (user: Partner): string => user?.name || '';
 

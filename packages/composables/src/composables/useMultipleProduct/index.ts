@@ -1,5 +1,5 @@
 import { Context, CustomQuery} from '@vue-storefront/core';
-import { Product, GraphQlAddMultipleProductsParams, GraphQlRemoveMultipleProductsParams, Cart } from '@vue-storefront/odoo-api';
+import { Product, GraphQlAddMultipleProductsParams, GraphQlRemoveMultipleProductsParams, Cart } from '@vue-storefront/web3store-api';
 import { useMultipleProductFactory, UseMultipleProductFactoryParams } from '../../factories/useMultipleProductFactory';
 import useCart from '../useCart';
 
@@ -14,7 +14,7 @@ const params: UseMultipleProductFactoryParams<Product, GraphQlAddMultipleProduct
 
     const { customQuery } = params;
 
-    const { data } = await context.$odoo.api.cartAddMultipleItems(params, customQuery);
+    const { data } = await context.$web3store.api.cartAddMultipleItems(params, customQuery);
 
     context.useCart.setCart(data.cartAddMultipleItems);
     return data.cartAddMultipleItems;
@@ -24,7 +24,7 @@ const params: UseMultipleProductFactoryParams<Product, GraphQlAddMultipleProduct
 
     const { customQuery } = params;
 
-    const { data } = await context.$odoo.api.cartRemoveMultipleItems(params, customQuery);
+    const { data } = await context.$web3store.api.cartRemoveMultipleItems(params, customQuery);
 
     context.useCart.setCart(data.cartRemoveMultipleItems);
     return data.cartRemoveMultipleItems;

@@ -2,7 +2,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Vuestorefront-Odoo',
+      name: 'Vuestorefront-Web3Store',
       script: './node_modules/nuxt/bin/nuxt.js',
       cwd: './packages/theme/',
       exec_mode: 'cluster',

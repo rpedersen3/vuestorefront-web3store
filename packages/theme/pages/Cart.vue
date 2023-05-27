@@ -220,7 +220,7 @@ import {
   useUser,
   cartGetters,
   useWishlist
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 import { useUiState } from '~/composables';
 import { onSSR } from '@vue-storefront/core';
 

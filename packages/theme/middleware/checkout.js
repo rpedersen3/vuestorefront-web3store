@@ -9,7 +9,7 @@ export default async ({ app, $vsf }) => {
 
   if (!currentPath) return;
 
-  const { cart } = await $vsf.$odoo.api.cartLoad();
+  const { cart } = await $vsf.$web3store.api.cartLoad();
 
   if (!cart) return;
 

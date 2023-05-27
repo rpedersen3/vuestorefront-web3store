@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import { useRoute, useRouter } from '@nuxtjs/composition-api';
-import { Category } from '@vue-storefront/odoo-api/server';
+import { Category } from '@vue-storefront/web3store-api/server';
 import hash from 'object-hash';
 
 const queryParamsNotFilters = ['page', 'sort', 'itemsPerPage'];

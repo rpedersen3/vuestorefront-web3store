@@ -51,13 +51,13 @@
           />
         </ValidationProvider>
       </div>
-      <OdooButton
+      <Web3StoreButton
         type="submit"
         :disabled="invalid || loading"
         :loading="loading"
       >
         {{ $t('Update password') }}
-      </OdooButton>
+      </Web3StoreButton>
     </form>
   </ValidationObserver>
 </template>
@@ -66,7 +66,7 @@
 import { ref } from '@nuxtjs/composition-api';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import { SfInput, SfButton } from '@storefront-ui/vue';
-import { usePassword } from '@vue-storefront/odoo';
+import { usePassword } from '@vue-storefront/web3store';
 import { useUiNotification } from '~/composables';
 export default {
   name: 'PasswordResetForm',

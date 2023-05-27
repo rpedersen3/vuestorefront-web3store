@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import webpack from 'webpack';
 import { getRoutes } from './routes';
-import { checkWinstonHook } from '@vue-storefront/odoo';
+import { checkWinstonHook } from '@vue-storefront/web3store';
 import getAppRoutes from './sitemap';
 import redirects from './customRoutes/redirects.json';
 import theme from './themeConfig';
@@ -83,16 +83,16 @@ export default {
   },
   pwa: {
     meta: {
-      name: 'VSF Odoo',
+      name: 'VSF Web3Store',
       theme_color: '#fff',
       lang: 'en',
-      description: 'VSF Odoo',
+      description: 'VSF Web3Store',
       twitterCard: 'summary_large_image'
     },
     manifest: {
-      name: 'VSF Odoo',
-      description: 'VSF Odoo',
-      short_name: 'VSFOdoo',
+      name: 'VSF Web3Store',
+      description: 'VSF Web3Store',
+      short_name: 'VSFWeb3Store',
       lang: 'en'
     },
     icon: {
@@ -140,8 +140,8 @@ export default {
         // @core-development-only-start
         // @core-development-only-end
         useRawSource: {
-          dev: ['@vue-storefront/odoo', '@vue-storefront/core'],
-          prod: ['@vue-storefront/odoo', '@vue-storefront/core']
+          dev: ['@vue-storefront/web3store', '@vue-storefront/core'],
+          prod: ['@vue-storefront/web3store', '@vue-storefront/core']
         }
       }
     ],
@@ -156,7 +156,7 @@ export default {
     /* project-only-start
     ['@vue-storefront/nuxt-theme'],
     project-only-end */
-    ['@vue-storefront/odoo/nuxt', {}]
+    ['@vue-storefront/web3store/nuxt', {}]
   ],
   publicRuntimeConfig: {
     theme,

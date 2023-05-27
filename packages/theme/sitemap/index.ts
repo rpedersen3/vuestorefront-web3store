@@ -1,5 +1,5 @@
 const { integrations } = require('../middleware.config');
-const graphqlBaseUrl = integrations.odoo.configuration.graphqlBaseUrl;
+const graphqlBaseUrl = integrations.web3store.configuration.graphqlBaseUrl;
 
 const consola = require('consola');
 const chalk = require('chalk');
@@ -9,7 +9,7 @@ const queries = require('../helpers/buildQueries');
 const headers = {
   headers: {
     'Content-Type': 'application/json',
-    'Request-Host': integrations.odoo.configuration.baseDomain
+    'Request-Host': integrations.web3store.configuration.baseDomain
   }
 };
 
@@ -22,12 +22,12 @@ const fetchCategories = async () => {
 };
 
 const getAppRoutes = async (): Promise<Array<string>> => {
-  consola.info(chalk.bold('ODOO'), ' - Started fetch sitemap dynamic routes...');
+  consola.info(chalk.bold('WEB3STORE'), ' - Started fetch sitemap dynamic routes...');
 
   const { data } = await fetchProducts();
   const { data: categoriesData } = await fetchCategories();
 
-  consola.success(chalk.bold('ODOO'), ' - Finished fetch sitemap dynamic routes from odoo!');
+  consola.success(chalk.bold('WEB3STORE'), ' - Finished fetch sitemap dynamic routes from web3store!');
 
   return [
     ...data.data.products.products.map(product => product.slug),

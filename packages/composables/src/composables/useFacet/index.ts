@@ -1,5 +1,5 @@
 import { Context, useFacetFactory } from '@vue-storefront/core';
-import { ParamsFromUrl, SearchResultParams } from '@vue-storefront/odoo-api/src/types/types';
+import { ParamsFromUrl, SearchResultParams } from '@vue-storefront/web3store-api/src/types/types';
 import { FacetResultsData } from '../types';
 
 const factoryParams = {
@@ -15,25 +15,25 @@ const factoryParams = {
     let categoryIdForProductCache = null;
     if (params.input.fetchCategory) {
       console.info('(Rich) useFacet fetch category: ' + JSON.stringify(params.input.categoryParams));
-      categoryResponse = await context.$odoo.api.getCategory(params.input.categoryParams, customQueryCategories, params.input.categoryParams?.cacheKey);
+      categoryResponse = await context.$web3store.api.getCategory(params.input.categoryParams, customQueryCategories, params.input.categoryParams?.cacheKey);
       categoryIdForProductCache = categoryResponse.data?.category.id;
     }
     if (params.input.fetchCategories) {
       console.info('(Rich) useFacet fetch categories: ' + JSON.stringify(params.input.fetchCategories));
-      categoriesResponse = await context.$odoo.api.getCategories(params.input.categoryParams, customQueryCategories, params.input.categoryParams?.cacheKey);
+      categoriesResponse = await context.$web3store.api.getCategories(params.input.categoryParams, customQueryCategories, params.input.categoryParams?.cacheKey);
       categoryIdForProductCache = categoriesResponse?.data?.categories?.categories?.[0].id;
     }
 
     console.info('(Rich) useFacet fetch product template list: ' + JSON.stringify(params.input.productParams));
-    const { data: filteredProductsData } = await context.$odoo.api.getProductsList(params.input.productParams, customQueryProducts, params.input.productParams?.cacheKey, categoryIdForProductCache);
+    const { data: filteredProductsData } = await context.$web3store.api.getProductsList(params.input.productParams, customQueryProducts, params.input.productParams?.cacheKey, categoryIdForProductCache);
     console.info('(Rich) get filtered products count ----------------- ' + filteredProductsData.products?.totalCount)
 
     //console.info('(Rich) product variants filter: ' + JSON.stringify(params.input.productParams))
-    //const { data: filteredProductVariantsData } = await context.$odoo.api.getProductVariantsList(params.input.productParams, customQueryProducts);
+    //const { data: filteredProductVariantsData } = await context.$web3store.api.getProductVariantsList(params.input.productParams, customQueryProducts);
     //console.info('(Rich) get filtered product variants count ----------------- ' + filteredProductVariantsData.productVariants.totalCount)
 
     //console.info('(Rich) product assets filter: ' + JSON.stringify(params.input.productParams))
-    const { data: filteredProductAssetsData } = await context.$odoo.api.getProductAssetsList(params.input.productParams, customQueryProducts);
+    const { data: filteredProductAssetsData } = await context.$web3store.api.getProductAssetsList(params.input.productParams, customQueryProducts);
     //console.info('(Rich) get filtered product assets ----------------- ' + JSON.stringify(filteredProductAssetsData.productAssets))
     //console.info('(Rich) get filtered product assets count ----------------- ' + filteredProductAssetsData.productAssets.totalCount)
 
@@ -43,7 +43,7 @@ const factoryParams = {
 
     //customQueryProducts.filter.ids = null;
     //console.info('(Rich) get all products')
-    const { data: productsData } = await context.$odoo.api.getProductsList(params.input.productParams, customQueryProducts);
+    const { data: productsData } = await context.$web3store.api.getProductsList(params.input.productParams, customQueryProducts);
     //console.info('(Rich) get all products count ----------------- ' + productsData.products.totalCount)
 
     //console.info('----------------------------------')

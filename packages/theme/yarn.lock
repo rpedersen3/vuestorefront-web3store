@@ -3146,9 +3146,9 @@
     lodash "^4.17.15"
     nuxt-purgecss "^1.0.0"
 
-"@vue-storefront/odoo-api@1.4.3-rc.18":
+"@vue-storefront/web3store-api@1.4.3-rc.18":
   version "1.4.3-rc.18"
-  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo-api/-/odoo-api-1.4.3-rc.18.tgz#2fbeef4cfdc8405c0247a692a4f55292b98ebb3a"
+  resolved "https://registry.yarnpkg.com/@vue-storefront/web3store-api/-/web3store-api-1.4.3-rc.18.tgz#2fbeef4cfdc8405c0247a692a4f55292b98ebb3a"
   integrity sha512-Xb9lKDBeZrZNhfg6X5uXQ43ZUzK94EflAHi4g2eQMkO2A+sGNxGyOVP4VdSdG8rUOt6ZG9JhrcXwZRT3hgdtiQ==
   dependencies:
     "@vue-storefront/core" "2.5.6"
@@ -3164,14 +3164,14 @@
     redis-tag-cache "^1.2.1"
     request-ip "^3.3.0"
 
-"@vue-storefront/odoo@1.4.3-rc.18":
+"@vue-storefront/web3store@1.4.3-rc.18":
   version "1.4.3-rc.18"
-  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo/-/odoo-1.4.3-rc.18.tgz#8a296db7cf45d4d64145546a0ebf0f31cdb930b0"
+  resolved "https://registry.yarnpkg.com/@vue-storefront/web3store/-/web3store-1.4.3-rc.18.tgz#8a296db7cf45d4d64145546a0ebf0f31cdb930b0"
   integrity sha512-gyoCV4FFnm5LNHiiwfX2pG6FvL+VIa892GJ27n6bFkELVwTF6NJLCaYyMts9DmoBGAnXtHkvaIWusCFxtu9t4Q==
   dependencies:
     "@nuxtjs/composition-api" "0.31.0"
     "@vue-storefront/core" "2.5.6"
-    "@vue-storefront/odoo-api" "1.4.3-rc.18"
+    "@vue-storefront/web3store-api" "1.4.3-rc.18"
     winston "^3.8.2"
 
 "@vue-storefront/redis-cache@^1.0.1":

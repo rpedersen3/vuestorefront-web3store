@@ -1,9 +1,9 @@
 /**
- * `api-client` for Odoo integration for Vue Storefront 2.
+ * `api-client` for Web3Store integration for Vue Storefront 2.
  *
  * @remarks
- * The `@vue-storefront/odoo` library includes everything needed to fetch data from the
- * Odoo eCommerce platform.
+ * The `@vue-storefront/web3store` library includes everything needed to fetch data from the
+ * Web3Store eCommerce platform.
  *
  * @packageDocumentation
  */

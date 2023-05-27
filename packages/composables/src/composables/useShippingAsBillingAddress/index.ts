@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
 import { ComputedProperty } from '@vue-storefront/core';
-import { Cart } from '@vue-storefront/odoo-api';
+import { Cart } from '@vue-storefront/web3store-api';
 import useCart from '../useCart';
 
 const useShippingAsBillingAddress = (): any => {

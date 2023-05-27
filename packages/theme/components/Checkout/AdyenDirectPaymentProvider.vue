@@ -11,7 +11,7 @@
 import { ref, onMounted, useRouter } from '@nuxtjs/composition-api';
 import { useUiNotification } from '~/composables';
 import { SfLoader } from '@storefront-ui/vue';
-import { usePayment, useAdyenDirectPayment } from '@vue-storefront/odoo';
+import { usePayment, useAdyenDirectPayment } from '@vue-storefront/web3store';
 import '@adyen/adyen-web/dist/adyen.css';
 export default {
   name: 'AdyenDirectPaymentProvider',

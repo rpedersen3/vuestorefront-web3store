@@ -25,8 +25,8 @@ const useProduct = () : any => {
 
     try {
       loading.value = true;
-      // Change "odoo" to the name of the integration
-      const { data } = await context.$odoo.api.loadTopSellers(params);
+      // Change "web3store" to the name of the integration
+      const { data } = await context.$web3store.api.loadTopSellers(params);
 
       topSellers.value = data.topSellers;
 

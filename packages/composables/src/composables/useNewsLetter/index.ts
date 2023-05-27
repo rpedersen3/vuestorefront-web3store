@@ -4,9 +4,9 @@ import { useNewsletterFactory, UseNewsletterFactoryParams } from '../../factorie
 const factoryParams: UseNewsletterFactoryParams<any, string> = {
 
   sendSubscription: async (context: Context, params) => {
-    Logger.debug('[Odoo]: Update user newsletter subscription', { params });
+    Logger.debug('[Web3Store]: Update user newsletter subscription', { params });
 
-    const { data } = await context.$odoo.api.subscribeNewsLetter(
+    const { data } = await context.$web3store.api.subscribeNewsLetter(
       {
         email: params.email
       }

@@ -193,7 +193,7 @@ import {
   useCart,
   cartGetters,
   useUserShipping
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 
 export default {

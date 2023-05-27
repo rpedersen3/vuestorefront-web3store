@@ -2,7 +2,7 @@ import {
   Category,
   Product,
   ProductImage
-} from '@vue-storefront/odoo-api';
+} from '@vue-storefront/web3store-api';
 
 export const productWithAttributes: Product = {
   id: 107,

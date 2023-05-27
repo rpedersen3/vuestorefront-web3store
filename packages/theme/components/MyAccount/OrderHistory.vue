@@ -122,7 +122,7 @@ import {
   useUserOrder,
   orderGetters,
   productGetters
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 import { AgnosticOrderStatus } from '@vue-storefront/core';
 import { onSSR } from '@vue-storefront/core';
 

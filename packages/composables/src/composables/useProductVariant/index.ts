@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 
 import { useVSFContext, vsfRef, Context, sharedRef} from '@vue-storefront/core';
-import { GraphQlGetProductVariantParams } from '@vue-storefront/odoo-api';
+import { GraphQlGetProductVariantParams } from '@vue-storefront/web3store-api';
 
 const useProductVariant = (queryParams: Record<string, string>): any => {
   const context: Context = useVSFContext();

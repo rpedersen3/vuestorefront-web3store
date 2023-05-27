@@ -87,7 +87,7 @@
 
 <script >
 import { computed, useRoute } from '@nuxtjs/composition-api';
-import { facetGetters } from '@vue-storefront/odoo';
+import { facetGetters } from '@vue-storefront/web3store';
 import { defineComponent } from '@nuxtjs/composition-api';
 import { useUiState, useUiHelpers } from '~/composables';
 import { SfButton, SfIcon, SfSelect, SfHeading } from '@storefront-ui/vue';

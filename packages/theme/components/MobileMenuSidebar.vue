@@ -77,7 +77,7 @@ import {
   useCategory,
   useFacet,
   facetGetters
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 import { onSSR } from '@vue-storefront/core';
 import { useUiState, useUiHelpers } from '~/composables';
 

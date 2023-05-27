@@ -10,7 +10,7 @@ import {
   ProductAsset,
   Attribute,
   AttributeValue
-} from '@vue-storefront/odoo-api';
+} from '@vue-storefront/web3store-api';
 
 import { SearchData, ProductAssetGetters } from '../types';
 

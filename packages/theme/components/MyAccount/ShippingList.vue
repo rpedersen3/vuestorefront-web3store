@@ -23,25 +23,25 @@
             </p>
           </div>
           <div class="flex flex-row gap-3">
-            <OdooButton
+            <Web3StoreButton
               @click="handleDeleteAddress(shipping)"
               class="smartphone-only"
             >
               <SfIcon icon="cross" color="gray" size="14px" />
-            </OdooButton>
-            <OdooButton
+            </Web3StoreButton>
+            <Web3StoreButton
               data-testid="change-address"
               @click="handleChangeAddress(shipping)"
             >
               {{ $t('Change') }}
-            </OdooButton>
-            <OdooButton
+            </Web3StoreButton>
+            <Web3StoreButton
               class="desktop-only"
               styleType="Danger"
               @click="handleDeleteAddress(shipping)"
             >
               {{ $t('Delete') }}
-            </OdooButton>
+            </Web3StoreButton>
           </div>
         </div>
       </div>
@@ -49,8 +49,8 @@
   </SfLoader>
 </template>
 <script lang="ts">
-import { Address } from '@vue-storefront/odoo-api';
-import { useUserShipping } from '@vue-storefront/odoo';
+import { Address } from '@vue-storefront/web3store-api';
+import { useUserShipping } from '@vue-storefront/web3store';
 import { defineComponent, PropType } from '@nuxtjs/composition-api';
 import { SfIcon, SfLoader } from '@storefront-ui/vue';
 import { useUiNotification } from '~/composables';

@@ -54,13 +54,13 @@
           style="margin-top: 10px"
           @keypress.enter="submitForm()"
         />
-        <OdooButton type="submit" :disabled="invalid" :loading="loading">
+        <Web3StoreButton type="submit" :disabled="invalid" :loading="loading">
           {{ $t('Update personal data') }}
-        </OdooButton>
+        </Web3StoreButton>
       </SfModal>
-      <OdooButton type="submit" :disabled="invalid" :loading="loading">
+      <Web3StoreButton type="submit" :disabled="invalid" :loading="loading">
         {{ $t('Update personal data') }}
-      </OdooButton>
+      </Web3StoreButton>
     </form>
   </ValidationObserver>
 </template>
@@ -68,7 +68,7 @@
 <script lang="ts">
 import { defineComponent, ref } from '@nuxtjs/composition-api';
 import { SfInput, SfModal } from '@storefront-ui/vue';
-import { userGetters, useUser } from '@vue-storefront/odoo';
+import { userGetters, useUser } from '@vue-storefront/web3store';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { useUiNotification } from '~/composables';
 export default defineComponent({

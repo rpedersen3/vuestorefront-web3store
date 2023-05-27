@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CustomQuery, Context, FactoryParams, PlatformApi, ComputedProperty, Composable, configureFactoryParams, sharedRef, Logger} from '@vue-storefront/core';
-import { GraphQlMakePaymentParams, PaymentProvider } from '@vue-storefront/odoo-api';
+import { GraphQlMakePaymentParams, PaymentProvider } from '@vue-storefront/web3store-api';
 import { computed, Ref } from '@nuxtjs/composition-api';
 
 export interface usePaymentProviderErrors {

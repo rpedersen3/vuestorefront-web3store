@@ -21,7 +21,7 @@ export interface Config<T = any> {
   [x: string]: any;
   app: Record<string, string>;
   graphqlBaseUrl: string;
-  odooBaseUrl: string;
+  web3storeBaseUrl: string;
   cookies: CookiesConfig;
   redisClient: boolean;
   client?: ApolloClient<T>;

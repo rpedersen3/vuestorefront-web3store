@@ -23,7 +23,7 @@ import {
   ButtonShape,
   ButtonSize,
   ButtonType
-} from '@vue-storefront/odoo-api';
+} from '@vue-storefront/web3store-api';
 export default defineComponent({
   components: {
     SfButton

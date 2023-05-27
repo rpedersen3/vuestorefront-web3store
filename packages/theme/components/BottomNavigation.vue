@@ -57,7 +57,7 @@ import {
   SfBadge
 } from '@storefront-ui/vue';
 import { useUiState } from '~/composables';
-import { useUser, useCart, cartGetters } from '@vue-storefront/odoo';
+import { useUser, useCart, cartGetters } from '@vue-storefront/web3store';
 import { computed, useRoute, useRouter } from '@nuxtjs/composition-api';
 
 export default {

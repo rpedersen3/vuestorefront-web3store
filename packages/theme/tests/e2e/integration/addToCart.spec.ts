@@ -1,7 +1,7 @@
 
 context('Add itens to cart from categories page', () => {
   beforeEach(() => {
-    cy.intercept('POST', '/api/odoo/getCategory', { fixture: 'categoryMocksData.json' });
+    cy.intercept('POST', '/api/web3store/getCategory', { fixture: 'categoryMocksData.json' });
   });
 
   it('Should add item to cart', () => {

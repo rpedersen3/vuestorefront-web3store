@@ -28,7 +28,7 @@
 
 <script>
 import { SfCheckbox, SfAddressPicker } from '@storefront-ui/vue';
-import { useUserShipping, userShippingGetters } from '@vue-storefront/odoo';
+import { useUserShipping, userShippingGetters } from '@vue-storefront/web3store';
 import { computed } from '@nuxtjs/composition-api';
 import UserShippingAddress from '~/components/UserShippingAddress';
 export default {

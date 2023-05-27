@@ -1,4 +1,4 @@
-import { Partner } from '@vue-storefront/odoo-api';
+import { Partner } from '@vue-storefront/web3store-api';
 
 export const mockedUser: Partner = {
   password: '123',

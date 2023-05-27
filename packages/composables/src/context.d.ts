@@ -1,8 +1,8 @@
 import { ApiClientMethods, IntegrationContext } from '@vue-storefront/core';
-import { ClientInstance, Config, OdooApiMethods } from '@vue-storefront/odoo-api';
+import { ClientInstance, Config, Web3StoreApiMethods } from '@vue-storefront/web3store-api';
 
 declare module '@vue-storefront/core' {
   export interface Context {
-    $odoo: IntegrationContext<ClientInstance, Config, ApiClientMethods<OdooApiMethods>>;
+    $web3store: IntegrationContext<ClientInstance, Config, ApiClientMethods<Web3StoreApiMethods>>;
   }
 }

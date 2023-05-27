@@ -153,13 +153,13 @@
         />
       </ValidationProvider>
       <div class="flex flex-row gap-3 mt-10">
-        <OdooButton
+        <Web3StoreButton
           type="submit"
           :disabled="invalid || loading"
           :loading="loading"
         >
           {{ $t(isNew ? 'Add the address' : 'Update the address') }}
-        </OdooButton>
+        </Web3StoreButton>
 
         <SfButton @click="$emit('cancel')" class="color-light sf-button">
           {{ $t('Cancel') }}
@@ -171,7 +171,7 @@
 
 <script>
 import { SfInput, SfButton, SfSelect, SfCheckbox } from '@storefront-ui/vue';
-import { useCountrySearch, useShipping } from '@vue-storefront/odoo';
+import { useCountrySearch, useShipping } from '@vue-storefront/web3store';
 import { useUiNotification } from '~/composables';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import {

@@ -130,7 +130,7 @@ import {
   categoryGetters,
   useCategories,
   useFacet
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 import { clickOutside } from '@storefront-ui/vue/src/utilities/directives/click-outside/click-outside-directive.js';
 import { computed, ref, watch } from '@nuxtjs/composition-api';
 import { onSSR } from '@vue-storefront/core';

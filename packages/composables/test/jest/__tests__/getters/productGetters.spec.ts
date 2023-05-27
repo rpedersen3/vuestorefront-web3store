@@ -42,17 +42,17 @@ it('get list of Attributes', () => {
 
 // it('get AgnosticMediaGallery with image for product', () => {
 //   const product = {
-//     image: 'http://odoo.com',
-//     smallImage: 'http://odoo.small.com'
+//     image: 'http://web3store.com',
+//     smallImage: 'http://web3store.small.com'
 //   } as Product;
 
 //   const galleryWithNull = getProductGallery(product);
 
 //   expect(galleryWithNull).toStrictEqual([
 //     {
-//       small: 'http://odoo.small.com',
-//       big: 'http://odoo.com',
-//       normal: 'http://odoo.com'
+//       small: 'http://web3store.small.com',
+//       big: 'http://web3store.com',
+//       normal: 'http://web3store.com'
 //     }
 //   ]);
 // });

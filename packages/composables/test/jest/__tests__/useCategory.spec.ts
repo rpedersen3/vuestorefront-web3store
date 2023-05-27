@@ -4,7 +4,7 @@ import { mockedCategories } from './__mocks__/mockedCategories';
 const { categorySearch } = useCategory('') as any;
 
 const context = {
-  $odoo: {
+  $web3store: {
     api: {
       getCategory: jest.fn(() => ({
         data: { categories: { categories: mockedCategories } }

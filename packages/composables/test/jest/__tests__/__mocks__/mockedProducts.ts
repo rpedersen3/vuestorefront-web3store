@@ -1,17 +1,17 @@
-import { Product, ProductImage } from '@vue-storefront/odoo-api';
+import { Product, ProductImage } from '@vue-storefront/web3store-api';
 
 export const mockedProducts: Product[] = [
   {
     id: 36,
     firstVariant: 53,
     smallImage:
-      'https://vsfdemo.labs.odoogap.com/web/image/product.template/36/image_128',
+      '',
     price: 281.25,
     name: 'Blazer Michael Kors brown',
     description:
       'The Karissa V-Neck Tee features a semi-fitted shape that\'s flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common "problem" areas. Find stunning women\'s cocktail dresses and party dresses.',
     image:
-      'https://vsfdemo.labs.odoogap.com/web/image/product.template/36/image_1920',
+      '',
     slug: 'blazer-michael-kors-brown-36',
     sku: null,
     isInWishlist: false,
@@ -59,13 +59,13 @@ export const mockedProducts: Product[] = [
     id: 54,
     firstVariant: 107,
     smallImage:
-      'https://vsfdemo.labs.odoogap.com/web/image/product.template/54/image_128',
+      '',
     price: 186.25,
     name: 'Booclothing Lerews beige',
     description:
       'The Karissa V-Neck Tee features a semi-fitted shape that\'s flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common "problem" areas. Find stunning women\'s cocktail dresses and party dresses.',
     image:
-      'https://vsfdemo.labs.odoogap.com/web/image/product.template/54/image_1920',
+      '',
     slug: 'booclothing-lerews-beige-54',
     sku: null,
     isInWishlist: false,

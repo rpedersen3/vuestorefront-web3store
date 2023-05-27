@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-prototype-builtins */
 import { Context, useShippingFactory, UseShippingParams } from '@vue-storefront/core';
-import { GraphQlAddAddressParams, GraphQlUpdateAddressParams, Partner } from '@vue-storefront/odoo-api';
+import { GraphQlAddAddressParams, GraphQlUpdateAddressParams, Partner } from '@vue-storefront/web3store-api';
 import useCart from '../useCart';
 
 const throwErrors = (errors) => {
@@ -41,7 +41,7 @@ const factoryParams: UseShippingParams<Partner, GraphQlUpdateAddressParams | Gra
 
     if ('id' in params && params.id) {
       try {
-        const { data } = await context.$odoo.api.shippingUpdateAddress(params, customQuery);
+        const { data } = await context.$web3store.api.shippingUpdateAddress(params, customQuery);
 
         context.useCart.cart.value.order.partnerShipping = data.updateAddress;
         return data.updateAddress;
@@ -50,7 +50,7 @@ const factoryParams: UseShippingParams<Partner, GraphQlUpdateAddressParams | Gra
       }
     }
 
-    const { data, errors } = await context.$odoo.api.shippingAddAdress(params, customQuery);
+    const { data, errors } = await context.$web3store.api.shippingAddAdress(params, customQuery);
 
     throwErrors(errors);
 

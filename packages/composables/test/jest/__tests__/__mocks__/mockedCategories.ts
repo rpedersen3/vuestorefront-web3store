@@ -1,4 +1,4 @@
-import { Category } from '@vue-storefront/odoo-api';
+import { Category } from '@vue-storefront/web3store-api';
 
 export const mockedCategories: Category[] = [
   {

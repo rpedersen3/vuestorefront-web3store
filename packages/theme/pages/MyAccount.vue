@@ -44,12 +44,12 @@
                 key="shipping-list"
               />
 
-              <OdooButton
+              <Web3StoreButton
                 class="action-button"
                 data-testid="add-new-address"
                 @click="handleAddNewAddress"
               >
-                {{ $t('Add New Address') }}</OdooButton
+                {{ $t('Add New Address') }}</Web3StoreButton
               >
             </SfTab>
           </SfTabs>
@@ -81,7 +81,7 @@ import {
   SfTabs
 } from '@storefront-ui/vue';
 import { ref, computed, defineComponent } from '@nuxtjs/composition-api';
-import { useUser, useUserShipping } from '@vue-storefront/odoo';
+import { useUser, useUserShipping } from '@vue-storefront/web3store';
 import { onSSR } from '@vue-storefront/core';
 import { useUiNotification } from '~/composables';
 import ProfileUpdateForm from '~/components/MyAccount/ProfileUpdateForm.vue';

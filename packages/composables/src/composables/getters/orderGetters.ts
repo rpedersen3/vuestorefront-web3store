@@ -3,7 +3,7 @@
 /* istanbul ignore file */
 
 import { UserOrderGetters } from '@vue-storefront/core';
-import { Order, OrderLine } from '@vue-storefront/odoo-api';
+import { Order, OrderLine } from '@vue-storefront/web3store-api';
 
 export const getDate = (order: Order): string => order?.dateOrder?.toString() || '-';
 

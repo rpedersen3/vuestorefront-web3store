@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 
 import { useVSFContext, vsfRef, Context, sharedRef} from '@vue-storefront/core';
-import { GraphQlGetProductAssetParams } from '@vue-storefront/odoo-api';
+import { GraphQlGetProductAssetParams } from '@vue-storefront/web3store-api';
 
 const useProductAsset = (queryParams: Record<string, string>): any => {
   const context: Context = useVSFContext();
@@ -23,11 +23,11 @@ const useProductAsset = (queryParams: Record<string, string>): any => {
 
     //if (combinationIds.length === 0) return;
 
-    const { data } = await context.$odoo.api.getProductAsset(params, customQuery);
+    const { data } = await context.$web3store.api.getProductAsset(params, customQuery);
 
-    console.info("(Rich) search product asset results: " + JSON.stringify(data?.productAsset))
+    console.info("(Rich) search product asset results: " + JSON.stringify(data?.productAssets))
 
-    productAsset.value = data?.productAsset;
+    productAsset.value = data?.productAssets;
   };
   
 

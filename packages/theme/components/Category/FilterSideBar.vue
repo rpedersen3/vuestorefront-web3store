@@ -121,7 +121,7 @@ import {
   SfRange,
   SfAccordion
 } from '@storefront-ui/vue';
-import { facetGetters } from '@vue-storefront/odoo';
+import { facetGetters } from '@vue-storefront/web3store';
 import {
   defineComponent,
   ref,

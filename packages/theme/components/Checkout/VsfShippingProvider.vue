@@ -25,7 +25,7 @@
 <script>
 import { SfButton, SfRadio } from '@storefront-ui/vue';
 import { ref, onMounted, watch } from '@nuxtjs/composition-api';
-import { useShippingMethods } from '@vue-storefront/odoo';
+import { useShippingMethods } from '@vue-storefront/web3store';
 
 export default {
   name: 'VsfShippingProvider',

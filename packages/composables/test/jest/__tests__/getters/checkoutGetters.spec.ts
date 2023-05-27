@@ -1,4 +1,4 @@
-import { ShippingMethod } from '@vue-storefront/odoo-api';
+import { ShippingMethod } from '@vue-storefront/web3store-api';
 import checkoutGetters from '../../../../src/composables/getters/checkoutGetters';
 
 const shippingMethod: ShippingMethod = {

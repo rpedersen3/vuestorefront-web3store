@@ -182,7 +182,7 @@ import { computed, ref, watch, useRoute, useRouter } from '@nuxtjs/composition-a
 import {
   cartGetters,
   orderGetters, useCart, useMakeOrder, usePayment
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 
 export default {
   name: 'Payment',

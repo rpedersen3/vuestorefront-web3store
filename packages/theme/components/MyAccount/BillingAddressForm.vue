@@ -155,7 +155,7 @@
 
 <script type="module">
 import { SfInput, SfButton, SfSelect, SfCheckbox } from '@storefront-ui/vue';
-import { useCountrySearch } from '@vue-storefront/odoo';
+import { useCountrySearch } from '@vue-storefront/web3store';
 import { watch } from '@nuxtjs/composition-api';
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import {

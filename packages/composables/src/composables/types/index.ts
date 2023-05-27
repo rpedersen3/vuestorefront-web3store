@@ -7,7 +7,7 @@ import {
   Product,
   ProductAsset,
   ProductVariant
-} from '@vue-storefront/odoo-api';
+} from '@vue-storefront/web3store-api';
 
 type ProductAssetFilters = any;
 

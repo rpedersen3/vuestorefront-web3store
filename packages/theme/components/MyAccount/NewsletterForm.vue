@@ -26,13 +26,13 @@
           </div>
         </slot>
         <slot name="form-button">
-          <OdooButton
+          <Web3StoreButton
             @click="handleUpdateNewsletter"
             :loading="loading"
             :disabled="checkedNewsletter.length === 0 || loading"
           >
             {{ $t('Save changes') }}
-          </OdooButton>
+          </Web3StoreButton>
         </slot>
       </div>
       <slot name="notice">
@@ -50,7 +50,7 @@ import { defineComponent, ref, onMounted } from '@nuxtjs/composition-api';
 import { SfCheckbox, SfTabs } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
 import { useUiNotification } from '~/composables';
-import { useMailing } from '@vue-storefront/odoo';
+import { useMailing } from '@vue-storefront/web3store';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export default defineComponent({

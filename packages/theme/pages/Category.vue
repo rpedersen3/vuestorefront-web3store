@@ -272,7 +272,7 @@ import {
   useProduct,
   productAssetGetters,
   facetGetters
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 
 
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';

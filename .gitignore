@@ -33,6 +33,3 @@ coverage
 # service workers
 sw.*
 
-scripts/publishApi.js
-scripts/publishComposable.js
-scripts/lib/publishNpm.js

@@ -4,7 +4,7 @@ import categoryMocks from '../fixtures/categoryMocksData.json';
 const requests = {
   getCategories (): Cypress.Chainable {
     const options = {
-      url: '/api/odoo/getCategory',
+      url: '/api/web3store/getCategory',
       method: 'POST',
       headers: {
         Accept: 'application/json',

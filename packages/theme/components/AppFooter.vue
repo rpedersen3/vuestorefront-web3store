@@ -164,7 +164,7 @@ import {
 } from '@storefront-ui/vue';
 import { ref } from '@nuxtjs/composition-api';
 import { addBasePath } from '@vue-storefront/core';
-import { useNewsLetter } from '@vue-storefront/odoo';
+import { useNewsLetter } from '@vue-storefront/web3store';
 import LocaleSelector from '~/components/LocaleSelector';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import { useUiNotification } from '~/composables';

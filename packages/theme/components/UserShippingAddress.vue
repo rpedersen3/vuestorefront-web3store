@@ -21,7 +21,7 @@
 
 <script>
 import { toRef, computed } from '@nuxtjs/composition-api';
-import { userShippingGetters } from '@vue-storefront/odoo';
+import { userShippingGetters } from '@vue-storefront/web3store';
 export default {
   name: 'UserShippingAddress',
   props: {

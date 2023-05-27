@@ -178,7 +178,7 @@ import {
   reviewGetters,
   facetGetters,
   useWishlist
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 
 import { onSSR } from '@vue-storefront/core';
 import { useRoute } from '@nuxtjs/composition-api';

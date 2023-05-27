@@ -2,7 +2,7 @@
 import { ref, ssrRef } from '@nuxtjs/composition-api';
 import { useVSFContext } from '@vue-storefront/core';
 import { Context } from '@vue-storefront/core';
-import { GraphQlGetCountryParams } from '@vue-storefront/odoo-api';
+import { GraphQlGetCountryParams } from '@vue-storefront/web3store-api';
 
 const useCountrySearch = (newKey: string): any => {
   const key = 'country' || newKey;
@@ -16,7 +16,7 @@ const useCountrySearch = (newKey: string): any => {
   const resetCountryErrors = () => (errors.value = { graphQLErrors: [] });
 
   const search = async () => {
-    const { data } = await context.$odoo.api.getCountries();
+    const { data } = await context.$web3store.api.getCountries();
 
     countries.value = data.countries.countries;
   };
@@ -28,7 +28,7 @@ const useCountrySearch = (newKey: string): any => {
       id: parseInt(countryId)
     };
 
-    const { data } = await context.$odoo.api.getCountryStates(params);
+    const { data } = await context.$web3store.api.getCountryStates(params);
 
     countryStates.value = data?.country?.states || [];
   };

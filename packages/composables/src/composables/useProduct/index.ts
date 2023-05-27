@@ -1,5 +1,5 @@
 import { Context, useProductFactory, UseProductFactoryParams, CustomQuery} from '@vue-storefront/core';
-import { GraphQlGetProductParams, Product } from '@vue-storefront/odoo-api';
+import { GraphQlGetProductParams, Product } from '@vue-storefront/web3store-api';
 
 const params: UseProductFactoryParams<Product, GraphQlGetProductParams> = {
   productsSearch: async (context: Context, params: GraphQlGetProductParams & { customQuery?: CustomQuery }): Promise<Product> => {
@@ -9,7 +9,7 @@ const params: UseProductFactoryParams<Product, GraphQlGetProductParams> = {
 
     const { customQuery } = params;
 
-    const { data } = await context.$odoo.api.getProduct(params, customQuery, params.cacheKey);
+    const { data } = await context.$web3store.api.getProduct(params, customQuery, params.cacheKey);
 
     return data.product;
   }

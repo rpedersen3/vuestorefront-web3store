@@ -171,7 +171,7 @@ import {
   productGetters,
   categoryGetters,
   useWishlist
-} from '@vue-storefront/odoo';
+} from '@vue-storefront/web3store';
 import { useUiHelpers } from '~/composables';
 
 export default {

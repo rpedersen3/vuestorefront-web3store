@@ -12,11 +12,11 @@ import {
   Product,
   GraphQlWishlistAddItemParams,
   GraphQlWishlistRemoveItemParams
-} from '@vue-storefront/odoo-api';
+} from '@vue-storefront/web3store-api';
 
 const params: UseWishlistFactoryParams<Wishlist, WishlistItem, Product> = {
   load: async (context: Context) => {
-    const { data } = await context.$odoo.api.wishlistLoad();
+    const { data } = await context.$web3store.api.wishlistLoad();
 
     return data.wishlistItems;
   },
@@ -27,7 +27,7 @@ const params: UseWishlistFactoryParams<Wishlist, WishlistItem, Product> = {
         productId: null
       };
 
-      const { data } = await context.$odoo.api.wishlistAddItem(
+      const { data } = await context.$web3store.api.wishlistAddItem(
         addWishlistItemParams, customQuery
       );
 
@@ -48,7 +48,7 @@ const params: UseWishlistFactoryParams<Wishlist, WishlistItem, Product> = {
       wishId: wishlistItem.id
     };
 
-    const { data } = await context.$odoo.api.wishlistRemoveItem(
+    const { data } = await context.$web3store.api.wishlistRemoveItem(
       removeItemParams, customQuery
     );
 

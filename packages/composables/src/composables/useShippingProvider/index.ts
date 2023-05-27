@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useShippingProviderFactory, UseShippingProviderParams, Context} from '@vue-storefront/core';
-import { ShippingInfo, ShippingMethod } from '@vue-storefront/odoo-api';
-import { throwErrors } from '@vue-storefront/odoo/src/helpers/graphqlError';
+import { ShippingInfo, ShippingMethod } from '@vue-storefront/web3store-api';
+import { throwErrors } from '@vue-storefront/web3store/src/helpers/graphqlError';
 import useCart from '../useCart';
 
 interface ShippingProviderState {
@@ -16,7 +16,7 @@ const useShippingProviderFactoryParams: UseShippingProviderParams<ShippingMethod
   },
   load: async (context: Context, { customQuery, state }) => {
 
-    const { data, errors } = await context.$odoo.api.shippingGetDeliveryMethods(customQuery);
+    const { data, errors } = await context.$web3store.api.shippingGetDeliveryMethods(customQuery);
 
     state.value = data.deliveryMethods;
 
@@ -26,7 +26,7 @@ const useShippingProviderFactoryParams: UseShippingProviderParams<ShippingMethod
   },
   save: async (context: Context, { shippingMethod, customQuery, state }) => {
 
-    const { data, errors } = await context.$odoo.api.setShippingMethod({ shippingMethodId: shippingMethod.id}, customQuery);
+    const { data, errors } = await context.$web3store.api.setShippingMethod({ shippingMethodId: shippingMethod.id}, customQuery);
 
     context.useCart.cart.value.order.shippingMethod = data.setShippingMethod?.order?.shippingMethod;
 

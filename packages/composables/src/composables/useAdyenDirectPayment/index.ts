@@ -23,31 +23,31 @@ const useAdyenDirectPayment = (acquirerId: number, cartId?: number): IUseAdyenDr
   const paymentDetails = sharedRef({}, `paymentDetails-${cartId}`);
 
   const openAdyenTransaction = async() => {
-    const { data } = await context.$odoo.api.adyenOpenTransaction({ acquirerId });
+    const { data } = await context.$web3store.api.adyenOpenTransaction({ acquirerId });
 
     transaction.value = data?.adyenTransaction?.transaction || {};
   };
 
   const getAdyenAcquirerInfo = async() => {
-    const { data } = await context.$odoo.api.adyenAcquirerInfo({ acquirerId });
+    const { data } = await context.$web3store.api.adyenAcquirerInfo({ acquirerId });
 
     acquirerInfo.value = data?.adyenAcquirerInfo?.adyenAcquirerInfo || {};
   };
 
   const getAdyenPaymentMethods = async() => {
-    const { data } = await context.$odoo.api.adyenPaymentMethods({ acquirerId });
+    const { data } = await context.$web3store.api.adyenPaymentMethods({ acquirerId });
 
     paymentMethods.value = data?.adyenPaymentMethods?.adyenPaymentMethods || {};
   };
 
   const getAdyenPaymentDetails = async(params: any) => {
-    const { data } = await context.$odoo.api.adyenPaymentDetails(params);
+    const { data } = await context.$web3store.api.adyenPaymentDetails(params);
 
     paymentDetails.value = data?.adyenPaymentDetails?.adyenPaymentDetails || {};
   };
 
   const adyenMakeDirectPayment = async(params: any) => {
-    const { data } = await context.$odoo.api.adyenMakeDirectPayment(params);
+    const { data } = await context.$web3store.api.adyenMakeDirectPayment(params);
 
     return data?.adyenPayments?.adyenPayments || {};
   };

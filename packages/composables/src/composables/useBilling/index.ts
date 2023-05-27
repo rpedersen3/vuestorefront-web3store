@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
 import { Context, useBillingFactory, UseBillingParams } from '@vue-storefront/core';
-import { Address, GraphQlAddAddressParams, GraphQlUpdateAddressParams } from '@vue-storefront/odoo-api';
+import { Address, GraphQlAddAddressParams, GraphQlUpdateAddressParams } from '@vue-storefront/web3store-api';
 import useCart from '../useCart';
 
 const throwErrors = (errors) => {
@@ -43,7 +43,7 @@ const factoryParams: UseBillingParams<any, GraphQlUpdateAddressParams | GraphQlA
     if ('id' in params && params.id) {
 
       try {
-        const { data } = await context.$odoo.api.billingUpdateAddress(params, customQuery);
+        const { data } = await context.$web3store.api.billingUpdateAddress(params, customQuery);
 
         context.useCart.cart.value.order.partnerInvoice = data.updateAddress;
 
@@ -53,7 +53,7 @@ const factoryParams: UseBillingParams<any, GraphQlUpdateAddressParams | GraphQlA
       }
     }
 
-    const { data, errors } = await context.$odoo.api.billingAddAddress(params, customQuery);
+    const { data, errors } = await context.$web3store.api.billingAddAddress(params, customQuery);
 
     throwErrors(errors);
 

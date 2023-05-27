@@ -16,7 +16,7 @@ import {
   UpdatePasswordResult, DeleteAddressResult, GraphQlAdyenAcquirerInfo, adyenAcquirerInfoResult, GraphQlAdyenMakeDirectPayment, adyenMakeDirectPaymentResult, GraphQlAdyenOpenTransaction, adyenOpenTransactionResult, GraphQlAdyenPaymentDetails, adyenPaymentDetailsResult, GraphQlAdyenPaymentMethods, adyenPaymentMethodsResult
 } from './types';
 
-export interface OdooApiMethods {
+export interface Web3StoreApiMethods {
   getCategory(params: GraphQlGetCategoryParams, customQuery?: CustomQuery, cacheKey?: string): Promise<FetchResult<CategoryResult>>;
   getCategories(params: GraphQlGetCategoriesParams, customQuery?: CustomQuery): Promise<FetchResult<CategoriesResult>>;
   getProductsList(params: GraphQlGetProductParams, customQuery?: CustomQuery, cacheKey?: string, categoryIdForCache?: string): Promise<FetchResult<ProductResult>>;

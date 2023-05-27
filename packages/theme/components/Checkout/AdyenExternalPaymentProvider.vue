@@ -13,7 +13,7 @@
 /* eslint-disable camelcase */
 
 import { onMounted, ref } from '@nuxtjs/composition-api';
-import { useAdyenExternalPaymentProvider } from '@vue-storefront/odoo';
+import { useAdyenExternalPaymentProvider } from '@vue-storefront/web3store';
 
 export default {
   name: 'AdyenExternalPaymentProvider',

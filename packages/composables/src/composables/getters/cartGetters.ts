@@ -12,7 +12,7 @@ import {
   OrderLine,
   Cart,
   OrderStage
-} from '@vue-storefront/odoo-api';
+} from '@vue-storefront/web3store-api';
 
 function roundDecimal(num) {
   const m = Number((Math.abs(num) * 100).toPrecision(15));

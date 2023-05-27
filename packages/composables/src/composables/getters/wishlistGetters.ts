@@ -9,7 +9,7 @@ import {
   Product,
   Wishlist,
   WishlistItem
-} from '@vue-storefront/odoo-api';
+} from '@vue-storefront/web3store-api';
 
 import { useContext } from '@nuxtjs/composition-api';
 

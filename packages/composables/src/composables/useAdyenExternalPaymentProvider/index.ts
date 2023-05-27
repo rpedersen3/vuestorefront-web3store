@@ -4,7 +4,7 @@ import {
   usePaymentProviderFactory,
   UsePaymentProviderParams
 } from '../../factories/usePaymentProviderFactory';
-import { PaymentProvider, PaymentMethod, GraphQlMakePaymentParams } from '@vue-storefront/odoo-api';
+import { PaymentProvider, PaymentMethod, GraphQlMakePaymentParams } from '@vue-storefront/web3store-api';
 
 const factoryParams: UsePaymentProviderParams<PaymentProvider, PaymentMethod, GraphQlMakePaymentParams> = {
 
@@ -19,7 +19,7 @@ const factoryParams: UsePaymentProviderParams<PaymentProvider, PaymentMethod, Gr
       paymentAcquireId: params.paymentAcquireId
     };
 
-    const { data } = await context.$odoo.api.paymentMakeExternal(externalParams);
+    const { data } = await context.$web3store.api.paymentMakeExternal(externalParams);
 
     return data?.makePayment.form;
   }

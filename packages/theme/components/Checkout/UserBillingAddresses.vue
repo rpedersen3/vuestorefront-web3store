@@ -42,7 +42,7 @@ import {
   SfCheckbox,
   SfAddressPicker
 } from '@storefront-ui/vue';
-import { userBillingGetters } from '@vue-storefront/odoo';
+import { userBillingGetters } from '@vue-storefront/web3store';
 
 export default {
   name: 'UserBillingAddresses',

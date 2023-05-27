@@ -1,5 +1,5 @@
 {
-  "name": "@vue-storefront/odoo-api",
+  "name": "@vue-storefront/web3store-api",
   "version": "1.5.1",
   "private": false,
   "sideEffects": false,

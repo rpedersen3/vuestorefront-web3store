@@ -13,7 +13,7 @@ const usePassword = (): any => {
   const resetPasswordErrors = () => (errors.value = null);
 
   const sendResetPassword = async (user) => {
-    const response = await context.$odoo.api
+    const response = await context.$web3store.api
       .sendResetPassword(user)
       .catch((error) => {
         errors.value = error;
@@ -23,7 +23,7 @@ const usePassword = (): any => {
   };
 
   const resetPassword = async ({ password, token }) => {
-    const response = await context.$odoo.api
+    const response = await context.$web3store.api
       .changePassword({ newPassword: password, token })
       .catch((error) => {
         errors.value = error;
@@ -38,7 +38,7 @@ const usePassword = (): any => {
     loading.value = true;
 
     try {
-      const { data, errors: apiError } = await context.$odoo.api.updatePassword({ currentPassword, newPassword });
+      const { data, errors: apiError } = await context.$web3store.api.updatePassword({ currentPassword, newPassword });
 
       if (data.updatePassword) {
         return data.updatePassword;

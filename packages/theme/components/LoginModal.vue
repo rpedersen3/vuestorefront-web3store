@@ -285,7 +285,7 @@ import {
   SfBar
 } from '@storefront-ui/vue';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
-import { useUser, usePassword } from '@vue-storefront/odoo';
+import { useUser, usePassword } from '@vue-storefront/web3store';
 import { useUiState } from '~/composables';
 
 export default {

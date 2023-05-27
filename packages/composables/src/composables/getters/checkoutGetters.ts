@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Cart, ShippingMethod } from '@vue-storefront/odoo-api';
+import { Cart, ShippingMethod } from '@vue-storefront/web3store-api';
 
 export const getShippingMethodId = (shippingMethod: ShippingMethod): string =>
   String(shippingMethod.id) || '';

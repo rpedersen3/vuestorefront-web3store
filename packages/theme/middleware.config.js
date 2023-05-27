@@ -1,7 +1,7 @@
-//const odooBaseUrl = process.env.BACKEND_BASE_URL || process.env.BASE_URL;
-//const graphqlBaseUrl = `${odooBaseUrl}graphql/rc`;
-const odooBaseUrl = "http://localhost:5000/";
-const graphqlBaseUrl = `${odooBaseUrl}graphql`;
+//const web3storeBaseUrl = process.env.BACKEND_BASE_URL || process.env.BASE_URL;
+//const graphqlBaseUrl = `${web3storeBaseUrl}graphql/rc`;
+const web3storeBaseUrl = "http://localhost:5000/";
+const graphqlBaseUrl = `${web3storeBaseUrl}graphql`;
 const baseDomain = process.env.SITE_URL?.replace('https://', '')?.slice(0, -1) || '';
 
 const extendApiMethods = require('./custom-api/api');
@@ -10,10 +10,10 @@ const customQueries = require('./custom-api/customQueries');
 console.info("(Rich) **************************** " + graphqlBaseUrl + " *****************")
 module.exports = {
   integrations: { 
-    odoo: {
-      location: '@vue-storefront/odoo-api/server',
+    web3store: {
+      location: '@vue-storefront/web3store-api/server',
       configuration: {
-        odooBaseUrl,
+        web3storeBaseUrl,
         graphqlBaseUrl,
         baseDomain,
         redisClient: (process.env.REDIS_ENABLED === 'true')
@@ -21,7 +21,7 @@ module.exports = {
       extensions: (extensions) => [
         ...extensions,
         {
-          name: 'odoo-extension',
+          name: 'web3store-extension',
           extendApiMethods
         }
       ],

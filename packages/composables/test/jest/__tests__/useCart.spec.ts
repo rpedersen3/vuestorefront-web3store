@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
-import { Order } from '@vue-storefront/odoo-api';
+import { Order } from '@vue-storefront/web3store-api';
 import useCart from '../../../src/composables/useCart';
 import { mockedCart } from './__mocks__/mockedCart';
 const { load, addItem, removeItem, updateItemQty, isInCart } = useCart() as any;
 
 const context = {
-  $odoo: {
+  $web3store: {
     api: {
       cartLoad: jest.fn(() => ({ data: {cart: mockedCart }})),
       cartAddItem: jest.fn(() => ({ data: { mockedCart: mockedCart } })),
@@ -31,7 +31,7 @@ describe('useCart', () => {
   });
 
   it('load empty cart', async () => {
-    context.$odoo.api.cartLoad = jest.fn(() => ({ data: { cart: { order: {} as Order }} }));
+    context.$web3store.api.cartLoad = jest.fn(() => ({ data: { cart: { order: {} as Order }} }));
 
     const cart = await load(context, {});
 
@@ -48,7 +48,7 @@ describe('useCart', () => {
       customQuery: {}
     });
 
-    expect(context.$odoo.api.cartAddItem).toBeCalledWith(
+    expect(context.$web3store.api.cartAddItem).toBeCalledWith(
       { productId: 10, quantity: 3 },
       {}
     );
@@ -60,7 +60,7 @@ describe('useCart', () => {
     };
     await addItem(context, { product, quantity: 2, customQuery: {} });
 
-    expect(context.$odoo.api.cartAddItem).toBeCalledWith(
+    expect(context.$web3store.api.cartAddItem).toBeCalledWith(
       {
         productId: 5,
         quantity: 2
@@ -80,14 +80,14 @@ describe('useCart', () => {
       customQuery: {}
     });
 
-    expect(context.$odoo.api.cartAddItem).not.toBeCalled();
+    expect(context.$web3store.api.cartAddItem).not.toBeCalled();
   });
 
   it('remove item from cart with saleOrder product', async () => {
     const orderLine = { id: 10 };
     await removeItem(context, { product: orderLine, customQuery: {} });
 
-    expect(context.$odoo.api.cartRemoveItem).toBeCalledWith({ lineId: 10 }, {});
+    expect(context.$web3store.api.cartRemoveItem).toBeCalledWith({ lineId: 10 }, {});
   });
 
   it('update item in cart ', async () => {
@@ -97,7 +97,7 @@ describe('useCart', () => {
       customQuery: {}
     });
 
-    expect(context.$odoo.api.cartUpdateItemQty).toBeCalledWith(
+    expect(context.$web3store.api.cartUpdateItemQty).toBeCalledWith(
       { lineId: 11, quantity: 12 },
       {}
     );

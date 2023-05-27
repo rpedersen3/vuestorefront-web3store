@@ -14,11 +14,11 @@ import {
   GraphQlApplyCouponParams,
   OrderLine,
   Product
-} from '@vue-storefront/odoo-api';
+} from '@vue-storefront/web3store-api';
 
 const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
   load: async (context: Context, { customQuery }) => {
-    const { data } = await context.$odoo.api.cartLoad(customQuery);
+    const { data } = await context.$web3store.api.cartLoad(customQuery);
 
     return data.cart;
   },
@@ -35,7 +35,7 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
         productId,
         quantity
       };
-      const { data } = await context.$odoo.api.cartAddItem(
+      const { data } = await context.$web3store.api.cartAddItem(
         addItemParams,
         customQuery
       );
@@ -50,7 +50,7 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
     const addItemParams: GraphQlCartRemoveItemParams = {
       lineId: product.id
     };
-    const { data } = await context.$odoo.api.cartRemoveItem(
+    const { data } = await context.$web3store.api.cartRemoveItem(
       addItemParams,
       customQuery
     );
@@ -64,7 +64,7 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
       quantity
     };
 
-    const { data } = await context.$odoo.api.cartUpdateItemQty(
+    const { data } = await context.$web3store.api.cartUpdateItemQty(
       updateItemParams,
       customQuery
     );
@@ -81,10 +81,10 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
 
     const params : GraphQlApplyCouponParams = { promo: couponCode };
 
-    const { data, errors } = await context.$odoo.api.applyCoupon(params, customQuery);
+    const { data, errors } = await context.$web3store.api.applyCoupon(params, customQuery);
 
     if (data.applyCoupon?.error) {
-      const { data: cartData } = await context.$odoo.api.cartLoad(customQuery);
+      const { data: cartData } = await context.$web3store.api.cartLoad(customQuery);
       return {
         updatedCart: cartData.cart,
         updatedCoupon: { applied: data.applyCoupon?.error }
