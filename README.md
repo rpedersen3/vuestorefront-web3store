@@ -8,6 +8,7 @@ https://www.richcanvas3.com/web3-composable-commerce-experiment
 
 ## configure
 
-yarn
-yarn build
-yarn dev
+
+* yarn
+* yarn build
+* yarn dev
