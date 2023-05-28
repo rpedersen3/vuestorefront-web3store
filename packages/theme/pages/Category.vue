@@ -327,11 +327,12 @@ export default defineComponent({
     });
     const showProductAssets = computed(() => {
       const ps = facetGetters.getFilteredProductAssets(result.value);
+      console.info("(Rich) product assets to show: ")
       return ps;
     });
     const categoryTree = computed(() => {
       const categoryTree = facetGetters.getCategoryTree(result.value)
-      console.info("(Rich) ^^^^^^^^^^  Category Tree: " + JSON.stringify(categoryTree));
+      console.info("(Rich) Category Tree: " + JSON.stringify(categoryTree));
       return categoryTree;
     });
       

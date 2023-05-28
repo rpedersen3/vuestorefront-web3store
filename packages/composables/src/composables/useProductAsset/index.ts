@@ -16,7 +16,7 @@ const useProductAsset = (queryParams: Record<string, string>): any => {
 
   const searchProductAsset = async ({ slug, customQuery }) => {
 
-    console.info("(Rich) search product asset")
+    console.info("(Rich) search product asset: slug: " + slug)
     const params: GraphQlGetProductAssetParams = {
       slug: slug //'/product/0xf7F8C5e703B973b20F5ceFd9e78896a32E4a0bc9/43'
     };
@@ -25,9 +25,9 @@ const useProductAsset = (queryParams: Record<string, string>): any => {
 
     const { data } = await context.$web3store.api.getProductAsset(params, customQuery);
 
-    console.info("(Rich) search product asset results: " + JSON.stringify(data?.productAssets))
+    console.info("(Rich) search product asset results: " + JSON.stringify(data?.productAsset))
 
-    productAsset.value = data?.productAssets;
+    productAsset.value = data?.productAsset;
   };
   
 

@@ -283,7 +283,8 @@ export default {
 
       console.info("products: " + JSON.stringify(products))
 
-      console.info("onSSR - search product asset")
+      console.info("onSSR - search product asset: ")
+      console.info("   slug: " + th.pathToSlug())
       console.info("   id: " + products.value?.id )
       console.info("   route query: " + JSON.stringify(root.$route.query) )
       await searchProductAsset({

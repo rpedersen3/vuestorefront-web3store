@@ -14,15 +14,22 @@ export default async function logInUser(
 ): Promise<FetchResult<LoginResult>> {
   const apolloClient = context.client.apollo as ApolloClient<any>;
 
+  console.info("(Rich) login within logInUser ")
+
   const { logInUser } = context.extendQuery(
     customQuery, { logInUser: { mutation, variables: params } }
   );
 
-  return await apolloClient.mutate({
+  console.info("(Rich) login within logInUser mutate ")
+  const loginRtnObj =  await apolloClient.mutate({
     mutation: gql`${logInUser.mutation}`,
     variables: logInUser.variables,
     errorPolicy: 'all',
     fetchPolicy: 'no-cache'
   });
+
+  console.info("(Rich) login within logInUser mutate done ")
+
+  return loginRtnObj;
 
 }

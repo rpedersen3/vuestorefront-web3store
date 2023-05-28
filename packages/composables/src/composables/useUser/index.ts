@@ -2,7 +2,7 @@
 /* istanbul ignore file */
 
 import { Context, useUserFactory, UseUserFactoryParams} from '@vue-storefront/core';
-import { Partner, GraphQlUpdateAccountParams, GraphQlLoginParams, AgnosticUser } from '@vue-storefront/web3store-api';
+import { Partner, GraphQlUpdateAccountParams, GraphQlLoginParams, AgnosticUser } from '@vue-storefront/odoo-api';
 
 const throwErrors = (errors) => {
   if (errors) {
@@ -12,17 +12,17 @@ const throwErrors = (errors) => {
 
 const factoryParams: UseUserFactoryParams<Partner, GraphQlUpdateAccountParams, any> = {
   load: async (context: Context) => {
-    const user = context.$web3store.config.app.$cookies.get('web3store-user');
+    const user = context.$odoo.config.app.$cookies.get('odoo-user');
     if (user) {
-      const { data, errors } = await context.$web3store.api.loadUser();
+      const { data, errors } = await context.$odoo.api.loadUser();
       return data?.partner;
     }
     return null;
   },
 
   logOut: async (context: Context) => {
-    context.$web3store.config.app.$cookies.remove('web3store-user');
-    await context.$web3store.api.logOutUser();
+    context.$odoo.config.app.$cookies.remove('odoo-user');
+    await context.$odoo.api.logOutUser();
   },
 
   updateUser: async (context: Context, { currentUser, updatedUserData, customQuery }) => {
@@ -32,7 +32,7 @@ const factoryParams: UseUserFactoryParams<Partner, GraphQlUpdateAccountParams, a
       name: updatedUserData.name,
       email: updatedUserData.email
     };
-    const { data, errors } = await context.$web3store.api.updateAccount(params, customQuery);
+    const { data, errors } = await context.$odoo.api.updateAccount(params, customQuery);
 
     throwErrors(errors);
 
@@ -42,11 +42,11 @@ const factoryParams: UseUserFactoryParams<Partner, GraphQlUpdateAccountParams, a
   register: async (context: Context, params?: Partner & { customQuery }) => {
     const { customQuery } = params;
 
-    const { data, errors } = await context.$web3store.api.signUpUser(params, customQuery);
+    const { data, errors } = await context.$odoo.api.signUpUser(params, customQuery);
 
     throwErrors(errors);
 
-    context.$web3store.config.app.$cookies.set('web3store-user', data.register);
+    context.$odoo.config.app.$cookies.set('odoo-user', data.register);
 
     return data?.register;
 
@@ -59,11 +59,15 @@ const factoryParams: UseUserFactoryParams<Partner, GraphQlUpdateAccountParams, a
       password: params.password
     };
 
-    const { data, errors } = await context.$web3store.api.logInUser(loginParams, customQuery);
-
+    console.info("(Rich) login in user via odoo api")
+    const { data, errors } = await context.$odoo.api.logInUser(loginParams, customQuery);
+    console.info("(Rich) login in user via odoo api done")
     throwErrors(errors);
 
-    context.$web3store.config.app.$cookies.set('web3store-user', data?.login?.partner);
+    console.info("(Rich) login in user set cookies")
+    context.$odoo.config.app.$cookies.set('odoo-user', data?.login?.partner);
+    
+    console.info("(Rich) return login partner")
     return data?.login?.partner;
 
   },

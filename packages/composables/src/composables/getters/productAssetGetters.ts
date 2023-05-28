@@ -22,7 +22,11 @@ export const getProductAssetName = (productAsset: ProductAsset): string =>
 export const getProductAssetProperties = (productAsset: ProductAsset): AttributeValue[] =>
   productAsset?.attributeValues || [];
 
-export const getProductAssetSlug = (productAsset: ProductAsset): string => productAsset?.slug || '';
+export const getProductAssetSlug = (productAsset: ProductAsset): string => {
+  console.info("(Rich) get asset slug: " + productAsset?.slug)
+  return productAsset?.slug || '';
+}
+
 
 export const getProductAssetPrice = (productAsset: ProductAsset): AgnosticPrice => {
   return {

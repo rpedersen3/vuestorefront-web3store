@@ -20,7 +20,7 @@ export function getRoutes(themeDir = __dirname) {
     },
     {
       name: 'productasset',
-      path: '/product/:name?/:asset?',
+      path: '/product-asset/:name?',
       component: path.resolve(themeDir, 'pages/ProductAsset.vue')
     },
     {

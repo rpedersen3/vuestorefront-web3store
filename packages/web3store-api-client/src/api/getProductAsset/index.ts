@@ -25,5 +25,6 @@ export default async function getProductAsset(
     errorPolicy: 'all'
   });
 
+  console.info("(Rich) api get product asset: " + JSON.stringify(response))
   return response;
 }

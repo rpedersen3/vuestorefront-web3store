@@ -19,7 +19,7 @@ const params: UseUserShippingFactoryParams<Partner[], any> = {
       stateId: Number.parseInt(address.state.id)
     };
 
-    const { data } = await context.$web3store.api.shippingAddAdress(params, customQuery);
+    const { data } = await context.$odoo.api.shippingAddAdress(params, customQuery);
 
     return [...shipping, data.addAddress];
   },
@@ -28,7 +28,7 @@ const params: UseUserShippingFactoryParams<Partner[], any> = {
     const deleteParams : GraphQlDeleteAddressParams = {
       id: address.id
     };
-    await context.$web3store.api.deleteAddress(deleteParams, customQuery);
+    await context.$odoo.api.deleteAddress(deleteParams, customQuery);
 
     return shipping.filter(item => item.id !== address.id);
   },
@@ -45,7 +45,7 @@ const params: UseUserShippingFactoryParams<Partner[], any> = {
       countryId: Number.parseInt(address.country.id),
       stateId: Number.parseInt(address.state.id)
     };
-    const { data } = await context.$web3store.api.shippingUpdateAddress(params, customQuery);
+    const { data } = await context.$odoo.api.shippingUpdateAddress(params, customQuery);
 
     const newList = [...shipping];
     const index = newList.findIndex((item) => item.id === data.updateAddress.id);
@@ -55,14 +55,14 @@ const params: UseUserShippingFactoryParams<Partner[], any> = {
   },
 
   load: async (context: Context, params?) => {
-    const { data } = await context.$web3store.api.shippingGetAddress();
+    const { data } = await context.$odoo.api.shippingGetAddress();
 
     return data.addresses;
   },
 
   setDefaultAddress: async (context: Context, { address, shipping }) => {
 
-    const { data, errors } = await context.$web3store.api.setDefaultAddress({ id: address.id, type: AddressType.Shipping });
+    const { data, errors } = await context.$odoo.api.setDefaultAddress({ id: address.id, type: AddressType.Shipping });
 
     throwErrors(errors);
 

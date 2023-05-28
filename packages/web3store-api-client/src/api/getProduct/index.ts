@@ -45,5 +45,7 @@ export default async function getProduct(
     );
   }
 
+  console.info("(Rich) response: " + JSON.stringify(response.data?.product))
+  
   return response;
 }

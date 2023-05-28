@@ -6,12 +6,12 @@ import {
   useUserOrderFactory,
   UseUserOrderFactoryParams
 } from '@vue-storefront/core';
-import { GraphQlOrdersParams, Order } from '@vue-storefront/web3store-api/src/types';
+import { GraphQlOrdersParams, Order } from '@vue-storefront/odoo-api/src/types';
 
 const params: UseUserOrderFactoryParams<Order[], GraphQlOrdersParams> = {
   searchOrders: async (context: Context, params: GraphQlOrdersParams & { customQuery?: CustomQuery })=> {
 
-    const { data } = await context.$web3store.api.ordersGet(params, params?.customQuery);
+    const { data } = await context.$odoo.api.ordersGet(params, params?.customQuery);
 
     return data?.orders?.orders || [];
   }
