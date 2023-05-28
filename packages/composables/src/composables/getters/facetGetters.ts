@@ -72,9 +72,9 @@ const getGrouped = (
     
   })
   
-  console.info('------------------------------------------------------')
-  console.info('resulting facets: ' + JSON.stringify(facets))
-  console.info('------------------------------------------------------')
+  //console.info('------------------------------------------------------')
+  //console.info('resulting facets: ' + JSON.stringify(facets))
+  //console.info('------------------------------------------------------')
   return facets;
 };
 

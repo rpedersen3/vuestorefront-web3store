@@ -12,11 +12,13 @@ import {
   Product,
   GraphQlWishlistAddItemParams,
   GraphQlWishlistRemoveItemParams
-} from '@vue-storefront/web3store-api';
+} from '@vue-storefront/odoo-api';
 
 const params: UseWishlistFactoryParams<Wishlist, WishlistItem, Product> = {
   load: async (context: Context) => {
-    const { data } = await context.$web3store.api.wishlistLoad();
+
+    console.log("(Rich) call wishlistLoad() on odoo: " + context.$odoo)
+    const { data } = await context.$odoo.api.wishlistLoad();
 
     return data.wishlistItems;
   },

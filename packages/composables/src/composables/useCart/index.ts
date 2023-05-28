@@ -18,7 +18,12 @@ import {
 
 const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
   load: async (context: Context, { customQuery }) => {
-    const { data } = await context.$web3store.api.cartLoad(customQuery);
+
+    console.log("(Rich) ************  composable useCart => load")
+    console.log("(Rich) ************  $odoo: " + context.$odoo)
+    console.log("(Rich) ************  $web3store: " + context.$web3store)
+
+    const { data } = await context.$odoo.api.cartLoad(customQuery);
 
     return data.cart;
   },
@@ -84,6 +89,7 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
     const { data, errors } = await context.$web3store.api.applyCoupon(params, customQuery);
 
     if (data.applyCoupon?.error) {
+      console.log("(Rich) ************ apply coupon composable useCart => load")
       const { data: cartData } = await context.$web3store.api.cartLoad(customQuery);
       return {
         updatedCart: cartData.cart,

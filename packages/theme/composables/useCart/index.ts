@@ -21,9 +21,11 @@ const useCart = () : any => {
 
   const load = async ({ customQuery } = { customQuery: undefined }) => {
     try {
-      loading.value = false;
-      const { data, graphQLErrors } = await context.$web3store.api.loadCart(customQuery);
 
+      console.log("(Rich) ************ theme composable useCart => load")
+
+      loading.value = false;
+      const { data, graphQLErrors } = await context.$odoo.api.loadCart(customQuery);
       throwErrors(graphQLErrors);
 
       setCart(data.cart);
@@ -39,7 +41,7 @@ const useCart = () : any => {
   const updateCartItem = async (itemId: number, quantity: number) => {
     try {
       loading.value = true;
-      const { data, errors } = await context.$web3store.api.updateCartItem(
+      const { data, errors } = await context.$odoo.api.updateCartItem(
         {
           productId: itemId,
           quantity
