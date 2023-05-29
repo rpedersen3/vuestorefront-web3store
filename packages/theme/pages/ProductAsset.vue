@@ -97,7 +97,7 @@
 
           <SfButton
             class="sf-button--text desktop-only product__save"
-            @click="addToWishList(product)"
+            @click="addToWishList(productAsset)"
           >
             {{ $t('Save for later') }}
           </SfButton>
@@ -165,13 +165,10 @@ import {
 } from '@storefront-ui/vue';
 
 import InstagramFeed from '~/components/InstagramFeed.vue';
-import RelatedProducts from '~/components/RelatedProducts.vue';
 import { ref, computed, reactive } from '@nuxtjs/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
 import {
-  useProduct,
   useCart,
-  productGetters,
   productAssetGetters,
   useReview,
   useProductAsset,
@@ -187,7 +184,7 @@ import LazyHydrate from 'vue-lazy-hydration';
 import { useUiHelpers, useUiState } from '~/composables';
 
 export default {
-  name: 'Product',
+  name: 'ProductAsset',
   transition: 'fade',
   setup(props, { root }) {
     const qty = ref(1);
@@ -198,50 +195,36 @@ export default {
     const { query } = root.$route;
     const { size, color } = root.$route.query;
     const configuration = reactive({ size, color });
-    const {
-      products,
-      search,
-      loading: productloading
-    } = useProduct(`products-${path}`);
+    
     const { addItem: addItemToWishlist } = useWishlist();
-    const addToWishList = async (product) => {
+    const addToWishList = async (productAsset) => {
       await addItemToWishlist({
-        product
+        productAsset
       });
     };
     const { searchProductAsset, productAssets, productAsset, elementNames } =
       useProductAsset(query);
 
     
-    const { products: relatedProducts, loading: relatedLoading } =
-      useProduct('relatedProducts');
     const { addItem, loading } = useCart();
     const { addTags } = useCache();
     const { toggleCartSidebar } = useUiState();
 
     const { reviews: productReviews } = useReview('productReviews');
 
-    const product = computed(() => {
-      console.info("computed product asset: " + JSON.stringify(productAsset.value))
-      return {
-        ...products.value,
-        productAsset: productAsset.value
-      };
-    });
-
     const options = computed(() =>
-      productGetters.getAttributes(product.value, ['color', 'size'])
+      productAssetGetters.getAttributes(productAsset.value, ['color', 'size'])
     );
     const description = computed(() =>
-      productGetters.getDescription(product.value)
+    productAssetGetters.getDescription(productAsset.value)
     );
     const properties = computed(() =>
-      productGetters.getProperties(product.value)
+    productAssetGetters.getProperties(productAsset.value)
     );
-    const code = computed(() => productGetters.getCode(product.value));
+    const code = computed(() => productAssetGetters.getCode(productAsset.value));
 
     const breadcrumbs = computed(() => {
-      const breadcrumbs = facetGetters.getBreadcrumbsByProduct(product.value);
+      const breadcrumbs = facetGetters.getBreadcrumbsByProduct(productAsset.value);
 
       if (breadcrumbs.length > 0 && breadcrumbs[0].text === 'Home')
         breadcrumbs[0].text = root.$t('Home');
@@ -253,17 +236,17 @@ export default {
     );
 
     const productGallery = computed(() =>
-      productGetters.getGallery(product.value).map((img) => ({
+      productAssetGetters.getGallery(productAsset.value).map((img) => ({
         mobile: {
-          url: root.$image(img.small, 128, 128, product.value.imageFilename)
+          url: root.$image(img.small, 128, 128, productAsset.value.imageFilename)
         },
         desktop: {
-          url: root.$image(img.normal, 422, 644, product.value.imageFilename)
+          url: root.$image(img.normal, 422, 644, productAsset.value.imageFilename)
         },
         big: {
-          url: root.$image(img.big, 422, 644, product.value.imageFilename)
+          url: root.$image(img.big, 422, 644, productAsset.value.imageFilename)
         },
-        alt: product.value.name || 'alt'
+        alt: 'alt'
       }))
     );
 
@@ -271,21 +254,8 @@ export default {
 
       console.info("onSSR - search product asset ")
 
-      // returns a single product at products.value
-      // will have assets in it
-      await search({
-        slug: th.pathToSlug(),
-        cacheKey: `API-P${root.$route.path}`,
-        customQuery: {
-          getProduct: 'customGetProduct'
-        }
-      });
-
-      console.info("products: " + JSON.stringify(products))
-
       console.info("onSSR - search product asset: ")
       console.info("   slug: " + th.pathToSlug())
-      console.info("   id: " + products.value?.id )
       console.info("   route query: " + JSON.stringify(root.$route.query) )
       await searchProductAsset({
         slug: th.pathToSlug()
@@ -294,7 +264,7 @@ export default {
       console.info("product asset: " + JSON.stringify(productAsset.value))
 
       console.info("onSSR - add tags")
-      addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
+      //addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
     });
 
     const updateFilter = (filter) => {
@@ -305,8 +275,9 @@ export default {
     };
 
     const handleAddToCart = async (qty) => {
+      console.info("(Rich) handleAddToCart: " + qty)
       const params = {
-        product: product.value,
+        product: productAsset.value,
         quantity: qty
       };
 
@@ -332,14 +303,12 @@ export default {
 
     return {
       th,
-      productloading,
       breadcrumbs,
       allOptionsSelected,
       checkSelected,
       elementNames,
       updateFilter,
       configuration,
-      product,
       productAsset,
       code,
       description,
@@ -347,20 +316,15 @@ export default {
       reviews,
       reviewGetters,
       averageRating: computed(() =>
-        productGetters.getAverageRating(product.value)
+        productAssetGetters.getAverageRating(productAsset.value)
       ),
       totalReviews: computed(() =>
-        productGetters.getTotalReviews(product.value)
+        productAssetGetters.getTotalReviews(productAsset.value)
       ),
-      relatedProducts: computed(() =>
-        productGetters.getFiltered(relatedProducts.value, { master: true })
-      ),
-      relatedLoading,
       options,
       qty,
       addItem,
       loading,
-      productGetters,
       productAssetGetters,
       productAssets,
       productGallery,
@@ -390,7 +354,6 @@ export default {
     SfButton,
     InstagramFeed,
     SfLoader,
-    RelatedProducts,
     MobileStoreBanner,
     SfColorPicker,
     LazyHydrate
@@ -406,12 +369,12 @@ export default {
   },
   head() {
     return {
-      title: this.product?.jsonLdname,
+      title: this.productAsset?.jsonLdname,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.product?.description
+          content: this.productAsset?.description
         },
         { hid: 'twitter-site', name: 'twitter:site', content: '' },
         {
@@ -422,12 +385,12 @@ export default {
         {
           hid: 'twitter-title',
           name: 'twitter:title',
-          content: this.product?.combinationInfo?.display_name || ''
+          content: this.productAsset?.combinationInfo?.display_name || ''
         },
         {
           hid: 'twitter-desc',
           name: 'twitter:description',
-          content: this.product?.description || ''
+          content: this.productAsset?.description || ''
         },
         {
           hid: 'twitter-image',
@@ -437,13 +400,13 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.product?.description
+          content: this.productAsset?.description
         }
       ],
       script: [
         {
           type: 'application/ld+json',
-          json: this.product?.jsonLd
+          json: this.productAsset?.jsonLd
         }
       ]
     };

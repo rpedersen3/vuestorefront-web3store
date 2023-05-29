@@ -767,7 +767,10 @@ export type GraphqlMailingContactsParams = {
 };
 
 export type GraphQlCartAddItemParams = {
-  productId: number;
+  productId?: number;
+  productVariantId?: number;
+  productAssetId?: number;
+  productAssetSlug?: string;
   quantity: number;
 };
 

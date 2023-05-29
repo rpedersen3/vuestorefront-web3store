@@ -79,7 +79,7 @@ export const getProductAssetAttributes = (
 ): Record<string, AgnosticAttribute | string> => {
   const attributes = {};
   const groupedByName = {};
-
+  /*
   productAsset?.attributeValues?.forEach((option) => {
     groupedByName[option.attribute.name] = {
       type: option.displayType,
@@ -109,7 +109,7 @@ export const getProductAssetAttributes = (
       attributes[option.displayType].push(groupedByName[option.attribute.name]);
     }
   });
-
+  */
   return attributes;
 };
 

@@ -13,15 +13,11 @@ import {
   GraphQlCartUpdateItemQtyParams,
   GraphQlApplyCouponParams,
   OrderLine,
-  Product
-} from '@vue-storefront/web3store-api';
+  ProductAsset
+} from '@vue-storefront/odoo-api';
 
-const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
+const params: UseCartFactoryParams<Cart, OrderLine, ProductAsset> = {
   load: async (context: Context, { customQuery }) => {
-
-    console.log("(Rich) ************  composable useCart => load")
-    console.log("(Rich) ************  $odoo: " + context.$odoo)
-    console.log("(Rich) ************  $web3store: " + context.$web3store)
 
     const { data } = await context.$odoo.api.cartLoad(customQuery);
 
@@ -30,7 +26,10 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
 
   addItem: async (context: Context, { currentCart, product, quantity, customQuery }) => {
 
-    if (!params.isInCart(context, { currentCart, product })) {
+    console.info("add item to cart ++++++++: " + product)
+
+    /*
+    if (product && !params.isProductInCart(context, { currentCart, product })) {
       console.info("get product variant ++++++++")
       const productId = product.productVariant
         ? product.productVariant?.product?.id
@@ -40,11 +39,31 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
         productId,
         quantity
       };
-      const { data } = await context.$web3store.api.cartAddItem(
+      const { data } = await context.$odoo.api.cartAddItem(
         addItemParams,
         customQuery
       );
 
+      return data?.cartAddItem;
+    }
+    */
+    // product is productAsset
+
+    console.info("check if is in cart")
+    if (product && !params.isInCart(context, { currentCart, product })) {
+      console.info("get product asset ++++++++")
+      
+      //productAssetSlug: productAsset.slug,
+      const addItemParams: GraphQlCartAddItemParams = {
+        productAssetSlug: product.slug,
+        quantity: quantity
+      };
+      const { data } = await context.$odoo.api.cartAddItem(
+        addItemParams,
+        customQuery
+      );
+
+      console.info("cart item added ++++++++")
       return data?.cartAddItem;
     }
 
@@ -55,7 +74,7 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
     const addItemParams: GraphQlCartRemoveItemParams = {
       lineId: product.id
     };
-    const { data } = await context.$web3store.api.cartRemoveItem(
+    const { data } = await context.$odoo.api.cartRemoveItem(
       addItemParams,
       customQuery
     );
@@ -69,7 +88,7 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
       quantity
     };
 
-    const { data } = await context.$web3store.api.cartUpdateItemQty(
+    const { data } = await context.$odoo.api.cartUpdateItemQty(
       updateItemParams,
       customQuery
     );
@@ -86,11 +105,11 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
 
     const params : GraphQlApplyCouponParams = { promo: couponCode };
 
-    const { data, errors } = await context.$web3store.api.applyCoupon(params, customQuery);
+    const { data, errors } = await context.$odoo.api.applyCoupon(params, customQuery);
 
     if (data.applyCoupon?.error) {
       console.log("(Rich) ************ apply coupon composable useCart => load")
-      const { data: cartData } = await context.$web3store.api.cartLoad(customQuery);
+      const { data: cartData } = await context.$odoo.api.cartLoad(customQuery);
       return {
         updatedCart: cartData.cart,
         updatedCoupon: { applied: data.applyCoupon?.error }
@@ -108,18 +127,22 @@ const params: UseCartFactoryParams<Cart, OrderLine, Product> = {
     return { updatedCart: currentCart };
   },
 
+  
   isInCart: (context: Context, { currentCart, product }) => {
     //const productId = product.productVariant
     //  ? product.productVariant.product.id
     //  : null;
     const productId = null
-
+    /*
     return (
       currentCart?.order?.orderLines?.some(
         (item) => item.product.id === productId
       ) || false
     );
+      */
+    return false;
   }
+
 };
 
-export default useCartFactory<Cart, OrderLine, Product>(params);
+export default useCartFactory<Cart, OrderLine, ProductAsset>(params);

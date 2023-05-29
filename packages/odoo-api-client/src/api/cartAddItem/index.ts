@@ -12,6 +12,10 @@ export default async function cartAddItem(
   params: GraphQlCartAddItemParams,
   customQuery?: CustomQuery
 ): Promise<FetchResult<CartAddItemResult>> {
+
+  params.productId = 1
+  console.info("odoo cart add item mutate: " + JSON.stringify(params))
+
   const apolloClient = context.client.apollo as ApolloClient<any>;
 
   const { cartAddItem } = context.extendQuery(
