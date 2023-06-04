@@ -11,6 +11,7 @@ https://www.richcanvas3.com/web3-composable-commerce-experiment
 C:\github\web3storefront
 
 * yarn
+* set NODE_OPTIONS=--openssl-legacy-provider
 * yarn build
 * yarn dev
 
