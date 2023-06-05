@@ -338,6 +338,10 @@ export type ProductAssetResult = {
   productAsset: ProductAsset
 };
 
+export type ProductAssetsResult = {
+  productAssets: ProductAssets
+};
+
 export type CartAddItemResult = {
   cartAddItem: Cart
 };

@@ -3,7 +3,13 @@
     'hello world'
   </div>
 </template>
+
+
+
+
 <script>
+
+
 import {
   SfHero,
   SfBanner,
@@ -25,6 +31,7 @@ import { useUiState } from '../composables';
 import { useNewsLetter, facetGetters } from '@vue-storefront/web3store';
 import { addBasePath } from '@vue-storefront/core';
 import { useUiNotification } from '~/composables';
+
 
 export default {
   name: 'Home',

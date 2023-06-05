@@ -17,12 +17,13 @@ export default async function getCategories(
     customQuery, { getCategories: { query, variables: params } }
   );
 
+  console.log("********** ok now query web3store using apollo ********")
   const response = await apolloClient.query({
     query: gql`${getCategories.query}`,
     variables: getCategories.variables,
     errorPolicy: 'all',
     fetchPolicy: 'no-cache'
   });
-
+  console.log("********** ok now query web3store using apollo done ********")
   return response;
 }

@@ -5,7 +5,7 @@ import {
   GraphQlAddAddressParams, GraphQlCartAddItemParams, GraphQlCartRemoveItemParams, GraphQlCartUpdateItemQtyParams, GraphQlGetCategoryParams,
   GraphQlGetCountryParams, GraphQlGetProductParams, GraphQlGetProductVariantParams, GraphQlGetProductAssetParams, GraphQlLoginParams,
   GraphQlMakePaymentParams, GraphQlResetPasswordParams, GraphQlSendResetPasswordParams, GraphQlUpdateAccountParams, GraphQlUpdateAddressParams,
-  GraphQlWishlistAddItemParams, GraphQlWishlistRemoveItemParams, LoadUserResult, LoginResult, Partner, ProductResult, ProductVariantResult, ProductAssetResult,
+  GraphQlWishlistAddItemParams, GraphQlWishlistRemoveItemParams, LoadUserResult, LoginResult, Partner, ProductResult, ProductVariantResult, ProductAssetResult, ProductAssetsResult,
   RegisterResult, ShippingAddAddresResponse, ShippingUpdateAddressResponse, SingleProductResult, WishlistLoadResponse, WishlistAddItemResponse,
   WishlistRemoveItemResponse, ShippingGetDeliveryMethodsResult, PaymentMakeExternalResult, CountryStatesResult, CountriesResult,
   PaymentLoadProvidersResult, BillingGetAddressResult, GraphQlDeleteAddressParams, ShippingGetAddresessResult, BillingAddAddresResponse,
@@ -24,7 +24,7 @@ export interface ApiMethods {
   getProductVariant(params: GraphQlGetProductVariantParams, customQuery?: CustomQuery): Promise<FetchResult<ProductVariantResult>>;
   getProductVariantsList(params: GraphQlGetProductParams, customQuery?: CustomQuery, cacheKey?: string, categoryIdForCache?: string): Promise<FetchResult<ProductVariantResult>>;
   getProductAsset(params: GraphQlGetProductAssetParams, customQuery?: CustomQuery): Promise<FetchResult<ProductAssetResult>>;
-  getProductAssetsList(params: GraphQlGetProductParams, customQuery?: CustomQuery, cacheKey?: string, categoryIdForCache?: string): Promise<FetchResult<ProductAssetResult>>;
+  getProductAssetsList(params: GraphQlGetProductParams, customQuery?: CustomQuery, cacheKey?: string, categoryIdForCache?: string): Promise<FetchResult<ProductAssetsResult>>;
   
   updateAccount(params: GraphQlUpdateAccountParams, customQuery?: CustomQuery): Promise<FetchResult>;
   signUpUser(params: Partner, customQuery?: CustomQuery): Promise<FetchResult<RegisterResult>>;
