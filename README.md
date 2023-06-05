@@ -11,7 +11,8 @@ https://www.richcanvas3.com/web3-composable-commerce-experiment
 C:\github\web3storefront
 
 * yarn
-* set NODE_OPTIONS=--openssl-legacy-provider
+* yarn add postcss-preset-env@7.3.0 -W
+*  only when go to node 20, set NODE_OPTIONS=--openssl-legacy-provider
 * yarn build
 * yarn dev
 
