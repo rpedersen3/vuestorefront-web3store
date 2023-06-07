@@ -25,30 +25,16 @@ const factoryParams = {
     }
 
     console.info('(Rich) useFacet fetch product template list: ' + JSON.stringify(params.input.productParams));
-    const { data: filteredProductsData } = await context.$web3store.api.getProductsList(params.input.productParams, customQueryProducts, params.input.productParams?.cacheKey, categoryIdForProductCache);
-    console.info('(Rich) get filtered products count ----------------- ' + filteredProductsData.products?.totalCount)
+    //const { data: filteredProductsData } = await context.$web3store.api.getProductsList(params.input.productParams, customQueryProducts, params.input.productParams?.cacheKey, categoryIdForProductCache);
 
-    //console.info('(Rich) product variants filter: ' + JSON.stringify(params.input.productParams))
-    //const { data: filteredProductVariantsData } = await context.$web3store.api.getProductVariantsList(params.input.productParams, customQueryProducts);
-    //console.info('(Rich) get filtered product variants count ----------------- ' + filteredProductVariantsData.productVariants.totalCount)
-
-    //console.info('(Rich) product assets filter: ' + JSON.stringify(params.input.productParams))
     const { data: filteredProductAssetsData } = await context.$web3store.api.getProductAssetsList(params.input.productParams, customQueryProducts);
-    //console.info('(Rich) get filtered product assets ----------------- ' + JSON.stringify(filteredProductAssetsData.productAssets))
-    //console.info('(Rich) get filtered product assets count ----------------- ' + filteredProductAssetsData.productAssets.totalCount)
-
 
     params.input.productParams.filter.attributeValueId = [];
     params.input.productParams.filter.ids = null;
 
-    //customQueryProducts.filter.ids = null;
-    //console.info('(Rich) get all products')
-    const { data: productsData } = await context.$web3store.api.getProductsList(params.input.productParams, customQueryProducts);
-    //console.info('(Rich) get all products count ----------------- ' + productsData.products.totalCount)
 
-    //console.info('----------------------------------')
-    //console.info('(Rich) asset attribute values: ' + JSON.stringify(filteredProductsData.products.assetAttributeValues))
-
+    //const { data: productsData } = await context.$web3store.api.getProductsList(params.input.productParams, customQueryProducts);
+    /*
     return {
       minPrice: productsData?.products?.minPrice || 0,
       maxPrice: productsData?.products?.maxPrice || 10000,
@@ -63,6 +49,23 @@ const factoryParams = {
       facets: filteredProductsData.products.facets,
       perPageOptions: 20,
       totalProducts: productsData.products.totalCount
+    };
+    */
+
+    return {
+      minPrice: 0, //productsData?.products?.minPrice || 0,
+      maxPrice: 10000, //productsData?.products?.maxPrice || 10000,
+      category: categoryResponse?.data?.category || {},
+      categories: categoriesResponse?.data?.categories?.categories || [],
+      products: null, //productsData.products.products,
+      filteredProducts: null, //filteredProductsData.products.products,
+      filteredProductVariants: null,
+      filteredProductAssets: filteredProductAssetsData.productAssets.productAssets,
+      attributes: null, //filteredProductsData.products.assetAttributeValues,
+      itemsPerPage: 1,
+      facets: null, //filteredProductsData.products.facets,
+      perPageOptions: 20,
+      totalProducts: 100 //productsData.products.totalCount
     };
   }
 };
