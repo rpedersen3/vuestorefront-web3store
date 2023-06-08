@@ -229,10 +229,6 @@ export default {
 
     const filteredTopCategories = computed(() => {
         const cats = topCategories
-        //const cats = topCategories.value?.filter(
-        //  (cat) => cat.name === 'nft' || cat.name === 'artwork' || cat.name === 'memorabilia'
-        //)
-        console.info("(Rich) filteredTopCategories yyyy: " + JSON.stringify(cats));
         return cats;
       }
       

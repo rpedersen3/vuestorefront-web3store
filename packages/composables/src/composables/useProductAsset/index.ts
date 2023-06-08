@@ -21,11 +21,9 @@ const useProductAsset = (queryParams: Record<string, string>): any => {
       slug: slug //'/product/0xf7F8C5e703B973b20F5ceFd9e78896a32E4a0bc9/43'
     };
 
-    //if (combinationIds.length === 0) return;
-
     const { data } = await context.$web3store.api.getProductAsset(params, customQuery);
 
-    console.info("(Rich) search product asset results: " + JSON.stringify(data?.productAsset))
+    console.info("(Rich) search product asset results: " + JSON.stringify(data))
 
     productAsset.value = data?.productAsset;
   };

@@ -235,20 +235,26 @@ export default {
       reviewGetters.getItems(productReviews.value)
     );
 
-    const productGallery = computed(() =>
-      productAssetGetters.getGallery(productAsset.value).map((img) => ({
-        mobile: {
-          url: root.$image(img.small, 128, 128, productAsset.value.imageFilename)
-        },
-        desktop: {
-          url: root.$image(img.normal, 422, 644, productAsset.value.imageFilename)
-        },
-        big: {
-          url: root.$image(img.big, 422, 644, productAsset.value.imageFilename)
-        },
-        alt: 'alt'
-      }))
-    );
+    const productGallery = computed(() => {
+
+      if (productAsset.value != null && productAsset.value.imageFileName != null) {
+        gallery = productAssetGetters.getGallery(productAsset.value).map((img) => ({
+          mobile: {
+            url: root.$image(img.small, 128, 128, productAsset.value.imageFilename)
+          },
+          desktop: {
+            url: root.$image(img.normal, 422, 644, productAsset.value.imageFilename)
+          },
+          big: {
+            url: root.$image(img.big, 422, 644, productAsset.value.imageFilename)
+          },
+          alt: 'alt'
+        }))
+        return gallery;
+      }
+      return null;
+    });
+
 
     onSSR(async () => {
 

@@ -22,11 +22,9 @@ const getGrouped = (
   searchData: SearchData,
   criteria?: string[]
 ): AgnosticGroupedFacet[] => {
-  if (!searchData?.data?.attributes) return [];
-
-  if (!searchData?.data?.attributes) return [];
-
-  const facets = searchData.data.facets;
+  
+  const facets = searchData?.data?.facets;
+  if (facets == null) return [];
 
   facets.forEach(facet => {
     if (facet.displayType == "range") {
@@ -179,7 +177,7 @@ const getPagination = (searchData: SearchData): AgnosticPagination => {
 
 const getBreadcrumbsByProduct = (product: Product): AgnosticBreadcrumb[] => {
   console.info('(Rich) product categories query')
-  const category = product.categories?.filter((cat) => cat?.name !== 'All');
+  const category = product?.categories?.filter((cat) => cat?.name !== 'All');
   const breadcrumbs = [{ text: 'Home', link: '/' }];
 
   if (!category) {

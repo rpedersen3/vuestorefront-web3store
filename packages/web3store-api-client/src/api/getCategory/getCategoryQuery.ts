@@ -36,6 +36,20 @@ query($slug: String, $id: Int) {
           }
         }
       }
+      facets {
+        id
+        name
+        displayName
+        displayType
+        structType
+        scalarType
+        min,
+        filteredMin,
+        max,
+        filteredMax,
+        list
+        filteredList
+      }
     }
 }
 `;

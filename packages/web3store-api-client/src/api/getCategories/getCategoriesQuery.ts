@@ -15,6 +15,20 @@ export default gql`
       pageSize: $pageSize
       sort: $sort
     ) {
+      facets {
+        id
+        name
+        displayName
+        displayType
+        structType
+        scalarType
+        min,
+        filteredMin,
+        max,
+        filteredMax,
+        list
+        filteredList
+      }
       categories {
         id
         name

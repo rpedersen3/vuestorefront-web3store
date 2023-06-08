@@ -370,8 +370,7 @@ export default defineComponent({
           currentRootCategory: currentRootCategory.value
         }
       });
-      console.info("(Rich) ------------ current category: " + JSON.stringify(currentRootCategory.value))
-      
+
       if (breadcrumbs.length > 0 && breadcrumbs[0].text === 'Home')
         breadcrumbs[0].text = root.$t('Home');
       return breadcrumbs;

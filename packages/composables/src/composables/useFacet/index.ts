@@ -14,13 +14,14 @@ const factoryParams = {
     let categoriesResponse = null;
     let categoryIdForProductCache = null;
     if (params.input.fetchCategory) {
-      console.info('(Rich) useFacet fetch category: ' + JSON.stringify(params.input.categoryParams));
       categoryResponse = await context.$web3store.api.getCategory(params.input.categoryParams, customQueryCategories, params.input.categoryParams?.cacheKey);
       categoryIdForProductCache = categoryResponse.data?.category.id;
     }
     if (params.input.fetchCategories) {
       console.info('(Rich) useFacet fetch categories: ' + JSON.stringify(params.input.fetchCategories));
       categoriesResponse = await context.$web3store.api.getCategories(params.input.categoryParams, customQueryCategories, params.input.categoryParams?.cacheKey);
+      console.info('(Rich) facet response: ' + JSON.stringify(categoriesResponse.data))
+
       categoryIdForProductCache = categoriesResponse?.data?.categories?.categories?.[0].id;
     }
 
@@ -52,6 +53,8 @@ const factoryParams = {
     };
     */
 
+    console.info("******* facets: " + JSON.stringify(categoryResponse.data?.category.facets))
+
     return {
       minPrice: 0, //productsData?.products?.minPrice || 0,
       maxPrice: 10000, //productsData?.products?.maxPrice || 10000,
@@ -63,7 +66,7 @@ const factoryParams = {
       filteredProductAssets: filteredProductAssetsData.productAssets.productAssets,
       attributes: null, //filteredProductsData.products.assetAttributeValues,
       itemsPerPage: 1,
-      facets: null, //filteredProductsData.products.facets,
+      facets: categoryResponse.data?.category?.facets || [],
       perPageOptions: 20,
       totalProducts: 100 //productsData.products.totalCount
     };
